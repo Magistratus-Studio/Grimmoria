@@ -1,21 +1,17 @@
 [gd_scene format=3 uid="uid://47tvo2mra35d"]
 
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_4ahfv"]
+[ext_resource type="Script" uid="uid://dqri10lsg0gom" path="res://Cenas/menuControllerl.gd" id="1_qdvqo"]
+[ext_resource type="Texture2D" uid="uid://dftckyamk614o" path="res://arrow_back.svg" id="2_sm8o4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gj1i6"]
 font_size = 60
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ahfv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_sm8o4"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
-
 [node name="Node" type="Node" unique_id=1045713507]
+script = ExtResource("1_qdvqo")
 
 [node name="TelaInicial" type="Control" parent="." unique_id=794557392]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,36 +42,55 @@ grow_horizontal = 2
 text = "GRIMMORIA"
 label_settings = SubResource("LabelSettings_gj1i6")
 
-[node name="InicioButton" type="TextureButton" parent="TelaInicial" unique_id=763936906]
+[node name="ControlIniciar" type="Control" parent="TelaInicial" unique_id=1317031098]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.50100005
-anchor_top = 0.83100003
-anchor_right = 0.50100005
-anchor_bottom = 0.83100003
-offset_left = -244.72003
-offset_top = -57.680054
-offset_right = -154.57997
-offset_bottom = -23.709106
-scale = Vector2(5.4359846, 3.414683)
-texture_normal = SubResource("PlaceholderTexture2D_4ahfv")
-stretch_mode = 0
+anchor_left = 0.2
+anchor_top = 0.769125
+anchor_right = 0.8073889
+anchor_bottom = 0.8352814
+offset_top = -0.480011
+offset_right = -0.32000732
+offset_bottom = -0.16003418
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="TelaInicial" unique_id=1469011765]
+[node name="Fundo" type="ColorRect" parent="TelaInicial/ControlIniciar" unique_id=1085492493]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.485
-anchor_top = 0.71800005
-anchor_right = 0.485
-anchor_bottom = 0.71800005
-offset_left = -91.20001
-offset_top = -34.04004
-offset_right = 90.79999
-offset_bottom = 34.95996
-text = "INICIAR"
-label_settings = SubResource("LabelSettings_sm8o4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+
+[node name="ButtonIniciar" type="Button" parent="TelaInicial/ControlIniciar" unique_id=1851342358]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TelaInicial/ControlIniciar" unique_id=810465587]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -41.5
+offset_right = 72.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Iniciar"
+label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="Control" parent="." unique_id=40463721]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,7 +121,7 @@ text = "MENU"
 label_settings = ExtResource("1_4ahfv")
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonControl" type="Control" parent="Menu" unique_id=1868771606]
+[node name="ControlLivro" type="Control" parent="Menu" unique_id=1868771606]
 layout_mode = 1
 anchor_left = 0.2
 anchor_top = 0.2644375
@@ -117,7 +132,7 @@ offset_right = -0.32000732
 offset_bottom = -0.16003418
 metadata/_edit_use_anchors_ = true
 
-[node name="Fundo" type="ColorRect" parent="Menu/ButtonControl" unique_id=2097726320]
+[node name="Fundo" type="ColorRect" parent="Menu/ControlLivro" unique_id=2097726320]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,7 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
 
-[node name="Button" type="Button" parent="Menu/ButtonControl" unique_id=740441205]
+[node name="ButtonLivro" type="Button" parent="Menu/ControlLivro" unique_id=740441205]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,7 +151,7 @@ grow_vertical = 2
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Menu/ButtonControl" unique_id=1793214720]
+[node name="Label" type="Label" parent="Menu/ControlLivro" unique_id=1793214720]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,7 +167,7 @@ grow_vertical = 2
 text = "Livro"
 label_settings = ExtResource("1_4ahfv")
 
-[node name="ButtonControl2" type="Control" parent="Menu" unique_id=254413851]
+[node name="ControlBiblioteca" type="Control" parent="Menu" unique_id=254413851]
 layout_mode = 1
 anchor_left = 0.2
 anchor_top = 0.366
@@ -163,7 +178,7 @@ offset_right = -0.32000732
 offset_bottom = -0.16003418
 metadata/_edit_use_anchors_ = true
 
-[node name="Fundo" type="ColorRect" parent="Menu/ButtonControl2" unique_id=362851804]
+[node name="Fundo" type="ColorRect" parent="Menu/ControlBiblioteca" unique_id=362851804]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,7 +187,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
 
-[node name="Button" type="Button" parent="Menu/ButtonControl2" unique_id=656293250]
+[node name="ButtonBiblioteca" type="Button" parent="Menu/ControlBiblioteca" unique_id=656293250]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,7 +197,7 @@ grow_vertical = 2
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Menu/ButtonControl2" unique_id=1688662810]
+[node name="Label" type="Label" parent="Menu/ControlBiblioteca" unique_id=1688662810]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -198,7 +213,7 @@ grow_vertical = 2
 text = "Biblioteca"
 label_settings = ExtResource("1_4ahfv")
 
-[node name="ButtonControl3" type="Control" parent="Menu" unique_id=250939540]
+[node name="ControlBatalhas" type="Control" parent="Menu" unique_id=250939540]
 layout_mode = 1
 anchor_left = 0.2
 anchor_top = 0.47068748
@@ -209,7 +224,7 @@ offset_right = -0.32000732
 offset_bottom = -0.16003418
 metadata/_edit_use_anchors_ = true
 
-[node name="Fundo" type="ColorRect" parent="Menu/ButtonControl3" unique_id=1254371591]
+[node name="Fundo" type="ColorRect" parent="Menu/ControlBatalhas" unique_id=1254371591]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -218,7 +233,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
 
-[node name="Button" type="Button" parent="Menu/ButtonControl3" unique_id=1419167895]
+[node name="ButtonBatalhas" type="Button" parent="Menu/ControlBatalhas" unique_id=1419167895]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,7 +243,7 @@ grow_vertical = 2
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Menu/ButtonControl3" unique_id=334405465]
+[node name="Label" type="Label" parent="Menu/ControlBatalhas" unique_id=334405465]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -244,7 +259,7 @@ grow_vertical = 2
 text = "Batalhas"
 label_settings = ExtResource("1_4ahfv")
 
-[node name="ButtonControl4" type="Control" parent="Menu" unique_id=2045980289]
+[node name="ControlConfig" type="Control" parent="Menu" unique_id=2045980289]
 layout_mode = 1
 anchor_left = 0.2
 anchor_top = 0.57225
@@ -255,7 +270,7 @@ offset_right = -0.32000732
 offset_bottom = -0.16003418
 metadata/_edit_use_anchors_ = true
 
-[node name="Fundo" type="ColorRect" parent="Menu/ButtonControl4" unique_id=1201646620]
+[node name="Fundo" type="ColorRect" parent="Menu/ControlConfig" unique_id=1201646620]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -264,7 +279,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
 
-[node name="Button" type="Button" parent="Menu/ButtonControl4" unique_id=846761960]
+[node name="ButtonConfig" type="Button" parent="Menu/ControlConfig" unique_id=846761960]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,7 +289,7 @@ grow_vertical = 2
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Menu/ButtonControl4" unique_id=349690140]
+[node name="Label" type="Label" parent="Menu/ControlConfig" unique_id=349690140]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -298,3 +313,199 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Fundo" type="ColorRect" parent="Biblioteca" unique_id=78249185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NomeBiblioteca" type="Label" parent="Biblioteca" unique_id=648212248]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104166664
+anchor_top = 0.0390625
+anchor_right = 0.88900006
+anchor_bottom = 0.104
+offset_right = -0.080078125
+offset_bottom = -0.11999512
+text = "Nome da Biblioteca"
+label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
+
+[node name="AreaBiblioteca" type="Panel" parent="Biblioteca" unique_id=66260601]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.123
+anchor_right = 0.94200003
+anchor_bottom = 0.81200004
+offset_left = -0.3199997
+offset_top = 0.55999756
+offset_right = -0.24005127
+offset_bottom = -0.36010742
+
+[node name="ControlButton" type="Control" parent="Biblioteca" unique_id=8875153]
+layout_mode = 1
+anchor_left = 0.35816666
+anchor_top = 0.8590313
+anchor_right = 0.6334444
+anchor_bottom = 0.9393126
+offset_left = 0.11999512
+offset_top = -0.5600586
+offset_right = -0.08001709
+offset_bottom = -0.32006836
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Biblioteca/ControlButton" unique_id=2082221902]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Fundo" type="ColorRect" parent="Biblioteca/ControlButton" unique_id=2046644312]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+
+[node name="Label" type="Label" parent="Biblioteca/ControlButton" unique_id=1433256775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Botão"
+label_settings = ExtResource("1_4ahfv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonVoltar" type="TextureButton" parent="Biblioteca" unique_id=475479421]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031944446
+anchor_top = 0.02265625
+anchor_right = 0.08794444
+anchor_bottom = 0.053656258
+offset_right = -0.3199997
+offset_bottom = 0.3199997
+texture_normal = ExtResource("2_sm8o4")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Configuracoes" type="Control" parent="." unique_id=1494395030]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fundo" type="ColorRect" parent="Configuracoes" unique_id=497092750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfigText" type="Label" parent="Configuracoes" unique_id=397246278]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.104
+anchor_right = 0.77400005
+anchor_bottom = 0.16900001
+offset_top = -0.11999512
+offset_right = -0.2800293
+offset_bottom = -0.32002258
+grow_horizontal = 2
+grow_vertical = 2
+text = "Configurações"
+label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
+
+[node name="Audio" type="Control" parent="Configuracoes" unique_id=508782587]
+layout_mode = 1
+anchor_left = 0.10400001
+anchor_top = 0.26378125
+anchor_right = 0.889
+anchor_bottom = 0.52215624
+offset_left = 0.11999512
+offset_top = 0.35998535
+offset_right = -0.08001709
+offset_bottom = -1.3599854
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Configuracoes/Audio" unique_id=417524582]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.76862746, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Configuracoes/Audio" unique_id=162523517]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GeralText" type="Label" parent="Configuracoes/Audio/VBoxContainer" unique_id=1291414508]
+layout_mode = 2
+text = "GERAL"
+label_settings = ExtResource("1_4ahfv")
+horizontal_alignment = 1
+
+[node name="GeralSlider" type="HSlider" parent="Configuracoes/Audio/VBoxContainer" unique_id=456361066]
+layout_mode = 2
+
+[node name="MusicaText" type="Label" parent="Configuracoes/Audio/VBoxContainer" unique_id=573496952]
+layout_mode = 2
+text = "MUSICA"
+label_settings = ExtResource("1_4ahfv")
+horizontal_alignment = 1
+
+[node name="MusicaSlider" type="HSlider" parent="Configuracoes/Audio/VBoxContainer" unique_id=1977752084]
+layout_mode = 2
+
+[node name="SfxText" type="Label" parent="Configuracoes/Audio/VBoxContainer" unique_id=591896480]
+layout_mode = 2
+text = "SFX"
+label_settings = ExtResource("1_4ahfv")
+horizontal_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="Configuracoes/Audio/VBoxContainer" unique_id=1105189260]
+layout_mode = 2
+
+[node name="ButtonVoltar" type="TextureButton" parent="Configuracoes" unique_id=1994163650]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055555556
+anchor_top = 0.0390625
+anchor_right = 0.111555554
+anchor_bottom = 0.0700625
+offset_right = -0.3199997
+offset_bottom = 0.3199997
+texture_normal = ExtResource("2_sm8o4")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="TelaInicial/ControlIniciar/ButtonIniciar" to="." method="_on_button_iniciar_pressed"]
+[connection signal="pressed" from="Menu/ControlBiblioteca/ButtonBiblioteca" to="." method="_on_button_biblioteca_pressed"]
+[connection signal="pressed" from="Menu/ControlConfig/ButtonConfig" to="." method="_on_button_config_pressed"]
+[connection signal="pressed" from="Biblioteca/ButtonVoltar" to="." method="_on_button_voltar_biblioteca_pressed"]
+[connection signal="pressed" from="Configuracoes/ButtonVoltar" to="." method="_on_button_voltar_config_pressed"]
