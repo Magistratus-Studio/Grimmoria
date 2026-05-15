@@ -1,96 +1,13 @@
 [gd_scene format=3 uid="uid://47tvo2mra35d"]
 
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_4ahfv"]
-[ext_resource type="Script" uid="uid://dqri10lsg0gom" path="res://Cenas/menuControllerl.gd" id="1_qdvqo"]
+[ext_resource type="Script" uid="uid://dqri10lsg0gom" path="res://Scripts/menuController.gd" id="1_qdvqo"]
 [ext_resource type="Texture2D" uid="uid://dftckyamk614o" path="res://arrow_back.svg" id="2_sm8o4"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_gj1i6"]
-font_size = 60
-font_color = Color(0, 0, 0, 1)
 
 [node name="Node" type="Node" unique_id=1045713507]
 script = ExtResource("1_qdvqo")
 
-[node name="TelaInicial" type="Control" parent="." unique_id=794557392]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fundo" type="ColorRect" parent="TelaInicial" unique_id=778458855]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Titulo" type="Label" parent="TelaInicial" unique_id=2075106810]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.507
-anchor_top = 0.19000001
-anchor_right = 0.507
-anchor_bottom = 0.19000001
-offset_left = -176.56006
-offset_top = -41.80002
-offset_right = 177.43994
-offset_bottom = 41.19998
-grow_horizontal = 2
-text = "GRIMMORIA"
-label_settings = SubResource("LabelSettings_gj1i6")
-
-[node name="ControlIniciar" type="Control" parent="TelaInicial" unique_id=1317031098]
-layout_mode = 1
-anchor_left = 0.2
-anchor_top = 0.769125
-anchor_right = 0.8073889
-anchor_bottom = 0.8352814
-offset_top = -0.480011
-offset_right = -0.32000732
-offset_bottom = -0.16003418
-metadata/_edit_use_anchors_ = true
-
-[node name="Fundo" type="ColorRect" parent="TelaInicial/ControlIniciar" unique_id=1085492493]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9490196, 0.64705884, 0.38039216, 1)
-
-[node name="ButtonIniciar" type="Button" parent="TelaInicial/ControlIniciar" unique_id=1851342358]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="TelaInicial/ControlIniciar" unique_id=810465587]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -41.5
-offset_right = 72.0
-offset_bottom = 41.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Iniciar"
-label_settings = ExtResource("1_4ahfv")
-metadata/_edit_use_anchors_ = true
-
 [node name="Menu" type="Control" parent="." unique_id=40463721]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,6 +103,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBiblioteca" type="Button" parent="Menu/ControlBiblioteca" unique_id=656293250]
 layout_mode = 1
@@ -212,6 +130,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Biblioteca"
 label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
 
 [node name="ControlBatalhas" type="Control" parent="Menu" unique_id=250939540]
 layout_mode = 1
@@ -232,6 +151,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBatalhas" type="Button" parent="Menu/ControlBatalhas" unique_id=1419167895]
 layout_mode = 1
@@ -258,13 +178,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Batalhas"
 label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
 
 [node name="ControlConfig" type="Control" parent="Menu" unique_id=2045980289]
 layout_mode = 1
 anchor_left = 0.2
-anchor_top = 0.57225
+anchor_top = 0.67225
 anchor_right = 0.8073889
-anchor_bottom = 0.6384063
+anchor_bottom = 0.7384063
 offset_top = -0.480011
 offset_right = -0.32000732
 offset_bottom = -0.16003418
@@ -278,6 +199,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonConfig" type="Button" parent="Menu/ControlConfig" unique_id=846761960]
 layout_mode = 1
@@ -304,6 +226,55 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Configurações"
 label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
+
+[node name="ControlLeitura" type="Control" parent="Menu" unique_id=1761566085]
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.57225
+anchor_right = 0.8073889
+anchor_bottom = 0.6384063
+offset_top = -0.480011
+offset_right = -0.32000732
+offset_bottom = -0.16003418
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="ColorRect" parent="Menu/ControlLeitura" unique_id=30829745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonLeitura" type="Button" parent="Menu/ControlLeitura" unique_id=135081721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Menu/ControlLeitura" unique_id=1183886373]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43707094
+anchor_top = 0.4882353
+anchor_right = 0.57894737
+anchor_bottom = 0.4882353
+offset_left = -72.0
+offset_top = -41.5
+offset_right = 72.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Leitura"
+label_settings = ExtResource("1_4ahfv")
+metadata/_edit_use_anchors_ = true
 
 [node name="Biblioteca" type="Control" parent="." unique_id=680544]
 visible = false
@@ -504,8 +475,8 @@ texture_normal = ExtResource("2_sm8o4")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="TelaInicial/ControlIniciar/ButtonIniciar" to="." method="_on_button_iniciar_pressed"]
 [connection signal="pressed" from="Menu/ControlBiblioteca/ButtonBiblioteca" to="." method="_on_button_biblioteca_pressed"]
 [connection signal="pressed" from="Menu/ControlConfig/ButtonConfig" to="." method="_on_button_config_pressed"]
+[connection signal="pressed" from="Menu/ControlLeitura/ButtonLeitura" to="." method="_on_button_leitura_pressed"]
 [connection signal="pressed" from="Biblioteca/ButtonVoltar" to="." method="_on_button_voltar_biblioteca_pressed"]
 [connection signal="pressed" from="Configuracoes/ButtonVoltar" to="." method="_on_button_voltar_config_pressed"]
