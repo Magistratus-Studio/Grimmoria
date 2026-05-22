@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cmd057lsx5dsu"]
+
+[ext_resource type="FontFile" uid="uid://020jgakp8wdf" path="res://Assets/fonts/Grenze/static/Grenze-Bold.ttf" id="1_m8eyo"]
+
+[resource]
+font = ExtResource("1_m8eyo")
+font_size = 30
+font_color = Color(0, 0, 0, 1)

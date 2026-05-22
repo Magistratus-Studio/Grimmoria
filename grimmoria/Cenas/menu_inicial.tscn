@@ -3,11 +3,19 @@
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_4ahfv"]
 [ext_resource type="Script" uid="uid://dqri10lsg0gom" path="res://Scripts/menuController.gd" id="1_qdvqo"]
 [ext_resource type="Texture2D" uid="uid://dftckyamk614o" path="res://arrow_back.svg" id="2_sm8o4"]
+[ext_resource type="Texture2D" uid="uid://bo1fo0bbvuw4g" path="res://Sprites/livroTemp.svg" id="4_o0k3s"]
+[ext_resource type="Script" uid="uid://dvivpgatq8t2s" path="res://Cenas/carouselController.gd" id="4_v5lwh"]
+[ext_resource type="LabelSettings" uid="uid://cmd057lsx5dsu" path="res://Assets/TextosBotoes.tres" id="5_g517m"]
+[ext_resource type="Texture2D" uid="uid://tsh2x8tlqxl6" path="res://Sprites/batalhaTemp.svg" id="6_8mts4"]
+[ext_resource type="Texture2D" uid="uid://emw3hhgtibwn" path="res://Sprites/feiticosTemp.svg" id="7_ylkv1"]
+[ext_resource type="Texture2D" uid="uid://u284d48eqtjg" path="res://Sprites/configTemp.svg" id="8_hx22f"]
+[ext_resource type="Texture2D" uid="uid://dk0btxmi1u87k" path="res://Sprites/fichaTemp.svg" id="9_1qhop"]
 
 [node name="Node" type="Node" unique_id=1045713507]
 script = ExtResource("1_qdvqo")
 
 [node name="Menu" type="Control" parent="." unique_id=40463721]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -277,7 +285,6 @@ label_settings = ExtResource("1_4ahfv")
 metadata/_edit_use_anchors_ = true
 
 [node name="Biblioteca" type="Control" parent="." unique_id=680544]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,66 +319,118 @@ anchors_preset = -1
 anchor_left = 0.056
 anchor_top = 0.123
 anchor_right = 0.94200003
-anchor_bottom = 0.81200004
+anchor_bottom = 0.77300006
 offset_left = -0.3199997
 offset_top = 0.55999756
 offset_right = -0.24005127
-offset_bottom = -0.36010742
+offset_bottom = -0.44006348
 
-[node name="ControlButton" type="Control" parent="Biblioteca" unique_id=8875153]
+[node name="CarouselControl" type="Control" parent="Biblioteca" unique_id=1442233559]
 layout_mode = 1
-anchor_left = 0.35816666
-anchor_top = 0.8590313
-anchor_right = 0.6334444
-anchor_bottom = 0.9393126
-offset_left = 0.11999512
-offset_top = -0.5600586
-offset_right = -0.08001709
-offset_bottom = -0.32006836
+anchor_top = 0.8023437
+anchor_right = 1.0
+anchor_bottom = 0.9710001
+offset_bottom = 0.11987305
+script = ExtResource("4_v5lwh")
+espacamento = 150.0
+escala_normal = 1.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="Biblioteca/ControlButton" unique_id=2082221902]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
+[node name="Livro" type="VBoxContainer" parent="Biblioteca/CarouselControl" unique_id=334124261]
+layout_mode = 0
+offset_left = 223.0
+offset_right = 396.0
+offset_bottom = 215.0
 
-[node name="Fundo" type="ColorRect" parent="Biblioteca/ControlButton" unique_id=2046644312]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+[node name="TextureButton" type="TextureButton" parent="Biblioteca/CarouselControl/Livro" unique_id=1011044378]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_o0k3s")
 
-[node name="Label" type="Label" parent="Biblioteca/ControlButton" unique_id=1433256775]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Botão"
-label_settings = ExtResource("1_4ahfv")
+[node name="Label" type="Label" parent="Biblioteca/CarouselControl/Livro" unique_id=646359217]
+layout_mode = 2
+text = "Livros"
+label_settings = ExtResource("5_g517m")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="ButtonVoltar" type="TextureButton" parent="Biblioteca" unique_id=475479421]
+[node name="Batalha" type="VBoxContainer" parent="Biblioteca/CarouselControl" unique_id=1755656198]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031944446
-anchor_top = 0.02265625
-anchor_right = 0.08794444
-anchor_bottom = 0.053656258
-offset_right = -0.3199997
-offset_bottom = 0.3199997
-texture_normal = ExtResource("2_sm8o4")
-stretch_mode = 0
+anchor_left = 0.56527776
+anchor_right = 0.63472223
+offset_right = 173.0
+offset_bottom = 215.0
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Biblioteca/CarouselControl/Batalha" unique_id=580670470]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_8mts4")
+
+[node name="Label" type="Label" parent="Biblioteca/CarouselControl/Batalha" unique_id=425638502]
+layout_mode = 2
+text = "Batalha"
+label_settings = ExtResource("5_g517m")
+horizontal_alignment = 1
+
+[node name="Feitico" type="VBoxContainer" parent="Biblioteca/CarouselControl" unique_id=1033597161]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8888889
+anchor_right = 0.9527778
+offset_right = 173.0
+offset_bottom = 215.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Biblioteca/CarouselControl/Feitico" unique_id=810069606]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_ylkv1")
+
+[node name="Label" type="Label" parent="Biblioteca/CarouselControl/Feitico" unique_id=1877284206]
+layout_mode = 2
+text = "Feitiços"
+label_settings = ExtResource("5_g517m")
+horizontal_alignment = 1
+
+[node name="Config" type="VBoxContainer" parent="Biblioteca/CarouselControl" unique_id=414847562]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.28055555
+anchor_right = -0.21666668
+offset_right = 173.0
+offset_bottom = 215.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Biblioteca/CarouselControl/Config" unique_id=994950723]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("8_hx22f")
+
+[node name="Label" type="Label" parent="Biblioteca/CarouselControl/Config" unique_id=1383332995]
+layout_mode = 2
+text = "Config"
+label_settings = ExtResource("5_g517m")
+horizontal_alignment = 1
+
+[node name="Ficha" type="VBoxContainer" parent="Biblioteca/CarouselControl" unique_id=814285066]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.06388887
+offset_right = 173.0
+offset_bottom = 215.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Biblioteca/CarouselControl/Ficha" unique_id=120768998]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_1qhop")
+
+[node name="Label" type="Label" parent="Biblioteca/CarouselControl/Ficha" unique_id=1324304673]
+layout_mode = 2
+text = "Ficha"
+label_settings = ExtResource("5_g517m")
+horizontal_alignment = 1
 
 [node name="Configuracoes" type="Control" parent="." unique_id=1494395030]
 visible = false
@@ -478,5 +537,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Menu/ControlBiblioteca/ButtonBiblioteca" to="." method="_on_button_biblioteca_pressed"]
 [connection signal="pressed" from="Menu/ControlConfig/ButtonConfig" to="." method="_on_button_config_pressed"]
 [connection signal="pressed" from="Menu/ControlLeitura/ButtonLeitura" to="." method="_on_button_leitura_pressed"]
-[connection signal="pressed" from="Biblioteca/ButtonVoltar" to="." method="_on_button_voltar_biblioteca_pressed"]
+[connection signal="pressed" from="Biblioteca/CarouselControl/Livro/TextureButton" to="." method="_on_button_leitura_pressed"]
+[connection signal="pressed" from="Biblioteca/CarouselControl/Config/TextureButton" to="." method="_on_button_config_pressed"]
 [connection signal="pressed" from="Configuracoes/ButtonVoltar" to="." method="_on_button_voltar_config_pressed"]
