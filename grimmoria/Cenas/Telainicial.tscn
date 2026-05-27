@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qop1vt026rex"]
 
-[ext_resource type="Script" uid="uid://c1mthe5w0qo57" path="res://Cenas/telainicial.gd" id="1_vfj6o"]
+[ext_resource type="Script" uid="uid://c1mthe5w0qo57" path="res://Scripts/telainicial.gd" id="1_vfj6o"]
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_wlnym"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gj1i6"]

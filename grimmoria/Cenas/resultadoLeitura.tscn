@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://5m8gdp250kwg"]
+
+[ext_resource type="Script" uid="uid://c1heef2l3ek48" path="res://Scripts/resultadoLeitura.gd" id="1_jsxsr"]
+[ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_nrkkn"]
+[ext_resource type="SpriteFrames" uid="uid://bbxfbj8tb1oxt" path="res://Sprites/spritesResultadoLeitura.tres" id="3_iao1p"]
+
+[node name="ResultadoLeitura" type="Control" unique_id=1772508341]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jsxsr")
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=439112135]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=979918900]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12222222
+anchor_top = 0.0875
+anchor_right = 0.881
+anchor_bottom = 0.15237501
+offset_right = -0.3199997
+offset_bottom = -0.040000916
+text = "Epifania Alcançada"
+label_settings = ExtResource("1_nrkkn")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextoXP" type="Label" parent="." unique_id=985474602]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6070312
+anchor_right = 1.0004444
+anchor_bottom = 0.67190623
+offset_right = -0.3199997
+offset_bottom = -0.040000916
+text = "00 xp sentimento"
+label_settings = ExtResource("1_nrkkn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextoTotal" type="Label" parent="." unique_id=1004334742]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.671875
+anchor_right = 1.0004444
+anchor_bottom = 0.73675
+offset_right = -0.3199997
+offset_bottom = -0.040000916
+text = "XP sentimento Total: "
+label_settings = ExtResource("1_nrkkn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=662445522]
+position = Vector2(360.00003, 521)
+scale = Vector2(10, 10)
+sprite_frames = ExtResource("3_iao1p")
+animation = &"anim_0"
+frame = 1
+frame_progress = 0.26879427
+
+[node name="ControlVoltar" type="Control" parent="." unique_id=159174551]
+layout_mode = 1
+anchor_left = 0.16527778
+anchor_top = 0.77615625
+anchor_right = 0.8129445
+anchor_bottom = 0.84231263
+offset_top = -0.47998047
+offset_right = -0.32000732
+offset_bottom = -0.16003418
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="ColorRect" parent="ControlVoltar" unique_id=673471797]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+
+[node name="ButtonVoltar" type="Button" parent="ControlVoltar" unique_id=1437283480]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelButton" type="Label" parent="ControlVoltar" unique_id=1274875999]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Voltar"
+label_settings = ExtResource("1_nrkkn")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ControlVoltar/ButtonVoltar" to="." method="_on_botao_voltar_pressed"]

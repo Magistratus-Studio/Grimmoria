@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://rbs7il48pjcw" path="res://Scripts/LeituraController.gd" id="1_k0l4t"]
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="2_p731m"]
-[ext_resource type="Texture2D" uid="uid://k8agpqnlegk" path="res://Sprites/roda_emocoes.png" id="3_p731m"]
+[ext_resource type="Texture2D" uid="uid://dpjt4dgs4j83g" path="res://Sprites/Roda emocoes.svg" id="3_juawc"]
 [ext_resource type="Texture2D" uid="uid://dlpatj4xqps4u" path="res://Sprites/ponteiro.png" id="4_axn8k"]
+[ext_resource type="Script" uid="uid://bww73ldvwk1au" path="res://Scripts/rodaControl.gd" id="4_juawc"]
 
 [node name="Leitura" type="Control" unique_id=186053274]
 layout_mode = 3
@@ -52,6 +53,16 @@ offset_right = 0.03994751
 offset_bottom = 0.35998535
 text = "00:00"
 label_settings = ExtResource("2_p731m")
+
+[node name="RodaControl" type="Control" parent="." unique_id=1700400184]
+layout_mode = 1
+anchor_top = 0.71171874
+anchor_right = 1.0001667
+anchor_bottom = 0.9998438
+offset_right = -0.11999512
+offset_bottom = 0.19995117
+script = ExtResource("4_juawc")
+metadata/_edit_use_anchors_ = true
 
 [node name="ControlStartLeitura" type="Control" parent="." unique_id=485950089]
 layout_mode = 1
@@ -105,7 +116,7 @@ anchor_left = 0.18333334
 anchor_top = 0.62459373
 anchor_right = 0.83100003
 anchor_bottom = 0.6907501
-offset_top = -0.480011
+offset_top = -0.47998047
 offset_right = -0.32000732
 offset_bottom = -0.16003418
 metadata/_edit_use_anchors_ = true
@@ -139,28 +150,16 @@ grow_vertical = 2
 text = "Encerrar Sessão"
 label_settings = ExtResource("2_p731m")
 
-[node name="HSlider" type="HSlider" parent="." unique_id=1195274295]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.869
-anchor_right = 1.0
-anchor_bottom = 0.901
-offset_top = -0.32006836
-offset_bottom = 0.7199707
-max_value = 360.0
-allow_greater = true
-allow_lesser = true
-
 [node name="Roda" type="Sprite2D" parent="." unique_id=555963424]
-position = Vector2(346, 1280)
-scale = Vector2(2, 2)
-texture = ExtResource("3_p731m")
+position = Vector2(358, 1331.055)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_juawc")
 
 [node name="Ponteiro" type="Sprite2D" parent="." unique_id=212909956]
-position = Vector2(348, 1280)
+position = Vector2(358, 933)
+rotation = 3.1415925
 texture = ExtResource("4_axn8k")
 
 [connection signal="timeout" from="TimerLeitura" to="." method="_on_timer_leitura_timeout"]
 [connection signal="pressed" from="ControlStartLeitura/ButtonStartLeitura" to="." method="_on_button_start_leitura_pressed"]
 [connection signal="pressed" from="ControlVoltar/ButtonVoltar" to="." method="_on_button_voltar_pressed"]
-[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
