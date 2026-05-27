@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://b2ihltekx1qa1"]
+[gd_scene format=4 uid="uid://b2ihltekx1qa1"]
 
-[node name="Combate" type="Node" unique_id=1769169220]
+[ext_resource type="TileSet" uid="uid://dt7etp7fj1nt0" path="res://Assets/tilesCombate.tres" id="1_nyvbu"]
+[ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
+[ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="3_wug3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
+atlas = ExtResource("2_803ca")
+region = Rect2(2, 1, 20, 23)
+
+[node name="Combate" type="Node2D" unique_id=919140062]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=178409547]
+tile_map_data = PackedByteArray("AAD//wAAAgAAAAMAAAD+/wAAAgAAAAMAAAAAAAAAAgAAAAMAAAD9/wAAAgAAAAMAAAABAAAAAgAAAAMAAAD9/wEAAgAAAAAAAAD9/wIAAgAAAAAAAAD9/wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD//wMAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAMAAgAAAAAAAAABAAIAAgAAAAAAAAABAAEAAgAAAAAAAAAAAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAIAAgAAAAAAAAD9////AgAAAAEAAAD9//7/AgAAAAEAAAD9//3/AgAAAAEAAAD+//3/AgAAAAEAAAD///3/AgAAAAEAAAD///7/AgAAAAEAAAAAAP7/AgAAAAEAAAAAAP3/AgAAAAEAAAABAP3/AgAAAAEAAAABAP7/AgAAAAEAAAABAP//AgAAAAEAAAAAAP//AgAAAAEAAAD/////AgAAAAEAAAD+////AgAAAAEAAAD+//7/AgAAAAEAAAA=")
+tile_set = ExtResource("1_nyvbu")
+occlusion_enabled = false
+
+[node name="Entidades" type="Node2D" parent="." unique_id=864216608]
+
+[node name="Sprite2D" type="Sprite2D" parent="Entidades" unique_id=854776950]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_t8vnd")
+
+[node name="TurnManager" type="Node" parent="." unique_id=1153103016]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422047906]
+
+[node name="StatusTopo" type="HBoxContainer" parent="CanvasLayer" unique_id=1193346418]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.06484375
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MaoCartas" type="HBoxContainer" parent="CanvasLayer" unique_id=575488525]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlLivro" type="Control" parent="CanvasLayer" unique_id=943934161]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.2644375
+anchor_right = 0.85877776
+anchor_bottom = 0.33059382
+offset_top = -0.480011
+offset_right = -0.32000732
+offset_bottom = -0.16003418
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="ColorRect" parent="CanvasLayer/ControlLivro" unique_id=48406958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.64705884, 0.38039216, 1)
+
+[node name="ButtonLivro" type="Button" parent="CanvasLayer/ControlLivro" unique_id=2147310344]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/ControlLivro" unique_id=1958656114]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -41.5
+offset_right = 72.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Encerrar Turno"
+label_settings = ExtResource("3_wug3p")

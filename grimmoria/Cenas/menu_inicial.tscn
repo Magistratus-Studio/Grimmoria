@@ -3,13 +3,13 @@
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_4ahfv"]
 [ext_resource type="Script" uid="uid://dqri10lsg0gom" path="res://Scripts/menuController.gd" id="1_qdvqo"]
 [ext_resource type="Texture2D" uid="uid://dftckyamk614o" path="res://arrow_back.svg" id="2_sm8o4"]
-[ext_resource type="Texture2D" uid="uid://bo1fo0bbvuw4g" path="res://Sprites/livroTemp.svg" id="4_o0k3s"]
+[ext_resource type="Texture2D" uid="uid://bo1fo0bbvuw4g" path="res://Sprites/biblioteca/livroTemp.svg" id="4_o0k3s"]
 [ext_resource type="Script" uid="uid://dvivpgatq8t2s" path="res://Scripts/carouselController.gd" id="4_v5lwh"]
 [ext_resource type="LabelSettings" uid="uid://cmd057lsx5dsu" path="res://Assets/TextosBotoes.tres" id="5_g517m"]
-[ext_resource type="Texture2D" uid="uid://tsh2x8tlqxl6" path="res://Sprites/batalhaTemp.svg" id="6_8mts4"]
-[ext_resource type="Texture2D" uid="uid://emw3hhgtibwn" path="res://Sprites/feiticosTemp.svg" id="7_ylkv1"]
-[ext_resource type="Texture2D" uid="uid://u284d48eqtjg" path="res://Sprites/configTemp.svg" id="8_hx22f"]
-[ext_resource type="Texture2D" uid="uid://dk0btxmi1u87k" path="res://Sprites/fichaTemp.svg" id="9_1qhop"]
+[ext_resource type="Texture2D" uid="uid://tsh2x8tlqxl6" path="res://Sprites/biblioteca/batalhaTemp.svg" id="6_8mts4"]
+[ext_resource type="Texture2D" uid="uid://emw3hhgtibwn" path="res://Sprites/biblioteca/feiticosTemp.svg" id="7_ylkv1"]
+[ext_resource type="Texture2D" uid="uid://u284d48eqtjg" path="res://Sprites/biblioteca/configTemp.svg" id="8_hx22f"]
+[ext_resource type="Texture2D" uid="uid://dk0btxmi1u87k" path="res://Sprites/biblioteca/fichaTemp.svg" id="9_1qhop"]
 
 [node name="Node" type="Node" unique_id=1045713507]
 script = ExtResource("1_qdvqo")

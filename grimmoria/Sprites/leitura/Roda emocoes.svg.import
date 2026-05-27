@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du3i4lu4eeaai"
-path="res://.godot/imported/tilemap-characters.png-5f907d45e28ddf62b4213bce87c330a3.ctex"
+uid="uid://dpjt4dgs4j83g"
+path="res://.godot/imported/Roda emocoes.svg-2efaf2c4c44de4b3610f64644718e14e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tilemap-characters.png"
-dest_files=["res://.godot/imported/tilemap-characters.png-5f907d45e28ddf62b4213bce87c330a3.ctex"]
+source_file="res://Sprites/leitura/Roda emocoes.svg"
+dest_files=["res://.godot/imported/Roda emocoes.svg-2efaf2c4c44de4b3610f64644718e14e.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

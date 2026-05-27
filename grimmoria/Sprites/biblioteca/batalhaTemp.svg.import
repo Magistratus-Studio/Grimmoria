@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tsh2x8tlqxl6"
-path="res://.godot/imported/batalhaTemp.svg-c9930c35229b67aca639224aef21d79c.ctex"
+path="res://.godot/imported/batalhaTemp.svg-959627a163b0efa089bb8c91c445a55e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/batalhaTemp.svg"
-dest_files=["res://.godot/imported/batalhaTemp.svg-c9930c35229b67aca639224aef21d79c.ctex"]
+source_file="res://Sprites/biblioteca/batalhaTemp.svg"
+dest_files=["res://.godot/imported/batalhaTemp.svg-959627a163b0efa089bb8c91c445a55e.ctex"]
 
 [params]
 

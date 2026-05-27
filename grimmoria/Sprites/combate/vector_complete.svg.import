@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://emw3hhgtibwn"
-path="res://.godot/imported/feiticosTemp.svg-b07ab9393f7a257d5c12e19969cbc420.ctex"
+uid="uid://cspvnirqlv1v3"
+path="res://.godot/imported/vector_complete.svg-0336085219bce185dc609a0b2edeed21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/feiticosTemp.svg"
-dest_files=["res://.godot/imported/feiticosTemp.svg-b07ab9393f7a257d5c12e19969cbc420.ctex"]
+source_file="res://Sprites/combate/vector_complete.svg"
+dest_files=["res://.godot/imported/vector_complete.svg-0336085219bce185dc609a0b2edeed21.ctex"]
 
 [params]
 
@@ -38,6 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.25
+svg/scale=1.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

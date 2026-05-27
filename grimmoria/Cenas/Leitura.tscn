@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://rbs7il48pjcw" path="res://Scripts/LeituraController.gd" id="1_k0l4t"]
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="2_p731m"]
-[ext_resource type="Texture2D" uid="uid://dpjt4dgs4j83g" path="res://Sprites/Roda emocoes.svg" id="3_juawc"]
-[ext_resource type="Texture2D" uid="uid://dlpatj4xqps4u" path="res://Sprites/ponteiro.png" id="4_axn8k"]
+[ext_resource type="Texture2D" uid="uid://dpjt4dgs4j83g" path="res://Sprites/leitura/Roda emocoes.svg" id="3_juawc"]
+[ext_resource type="Texture2D" uid="uid://dlpatj4xqps4u" path="res://Sprites/leitura/ponteiro.png" id="4_axn8k"]
 [ext_resource type="Script" uid="uid://bww73ldvwk1au" path="res://Scripts/rodaControl.gd" id="4_juawc"]
 
 [node name="Leitura" type="Control" unique_id=186053274]

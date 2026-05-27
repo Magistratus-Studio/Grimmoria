@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo1fo0bbvuw4g"
-path="res://.godot/imported/livroTemp.svg-b620b371b5b224f242d402621fe6502d.ctex"
+uid="uid://u284d48eqtjg"
+path="res://.godot/imported/configTemp.svg-de418853cad3c2a14e1d0c4cbbf0f555.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/livroTemp.svg"
-dest_files=["res://.godot/imported/livroTemp.svg-b620b371b5b224f242d402621fe6502d.ctex"]
+source_file="res://Sprites/biblioteca/configTemp.svg"
+dest_files=["res://.godot/imported/configTemp.svg-de418853cad3c2a14e1d0c4cbbf0f555.ctex"]
 
 [params]
 

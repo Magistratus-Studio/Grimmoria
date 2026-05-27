@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u284d48eqtjg"
-path="res://.godot/imported/configTemp.svg-6ecf17cd92ff015c4f97c42f282e0d39.ctex"
+uid="uid://dlpatj4xqps4u"
+path="res://.godot/imported/ponteiro.png-3feddea655319fae41f8f4c53f1bcf20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/configTemp.svg"
-dest_files=["res://.godot/imported/configTemp.svg-6ecf17cd92ff015c4f97c42f282e0d39.ctex"]
+source_file="res://Sprites/leitura/ponteiro.png"
+dest_files=["res://.godot/imported/ponteiro.png-3feddea655319fae41f8f4c53f1bcf20.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.25
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
