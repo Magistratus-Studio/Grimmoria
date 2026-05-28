@@ -1,14 +1,17 @@
 [gd_scene format=4 uid="uid://b2ihltekx1qa1"]
 
 [ext_resource type="TileSet" uid="uid://dt7etp7fj1nt0" path="res://Assets/tilesCombate.tres" id="1_nyvbu"]
+[ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/combate.gd" id="1_wug3p"]
 [ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
-[ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="3_wug3p"]
+[ext_resource type="Resource" uid="uid://b0p7o771bkjlb" path="res://Assets/Cartas/bolaDeFogo.tres" id="2_wug3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
 atlas = ExtResource("2_803ca")
 region = Rect2(2, 1, 20, 23)
 
 [node name="Combate" type="Node2D" unique_id=919140062]
+script = ExtResource("1_wug3p")
+carta_teste = ExtResource("2_wug3p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=178409547]
 tile_map_data = PackedByteArray("AAD//wAAAgAAAAMAAAD+/wAAAgAAAAMAAAAAAAAAAgAAAAMAAAD9/wAAAgAAAAMAAAABAAAAAgAAAAMAAAD9/wEAAgAAAAAAAAD9/wIAAgAAAAAAAAD9/wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD//wMAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAMAAgAAAAAAAAABAAIAAgAAAAAAAAABAAEAAgAAAAAAAAAAAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAIAAgAAAAAAAAD9////AgAAAAEAAAD9//7/AgAAAAEAAAD9//3/AgAAAAEAAAD+//3/AgAAAAEAAAD///3/AgAAAAEAAAD///7/AgAAAAEAAAAAAP7/AgAAAAEAAAAAAP3/AgAAAAEAAAABAP3/AgAAAAEAAAABAP7/AgAAAAEAAAABAP//AgAAAAEAAAAAAP//AgAAAAEAAAD/////AgAAAAEAAAD+////AgAAAAEAAAD+//7/AgAAAAEAAAA=")
@@ -32,52 +35,54 @@ anchor_bottom = 0.06484375
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="MaoCartas" type="HBoxContainer" parent="CanvasLayer" unique_id=575488525]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ControlLivro" type="Control" parent="CanvasLayer" unique_id=943934161]
-layout_mode = 3
-anchor_left = 0.2
-anchor_top = 0.2644375
-anchor_right = 0.85877776
-anchor_bottom = 0.33059382
-offset_top = -0.480011
-offset_right = -0.32000732
-offset_bottom = -0.16003418
-metadata/_edit_use_anchors_ = true
-
-[node name="Fundo" type="ColorRect" parent="CanvasLayer/ControlLivro" unique_id=48406958]
-layout_mode = 1
-anchors_preset = 15
+[node name="MaoJogador" type="HBoxContainer" parent="CanvasLayer" unique_id=575488525]
+anchors_preset = -1
+anchor_top = 0.9164063
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9490196, 0.64705884, 0.38039216, 1)
-
-[node name="ButtonLivro" type="Button" parent="CanvasLayer/ControlLivro" unique_id=2147310344]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
+grow_vertical = 0
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/ControlLivro" unique_id=1958656114]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+[node name="TurnoButton" type="Button" parent="CanvasLayer" unique_id=1028914770]
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -41.5
-offset_right = 72.0
-offset_bottom = 41.5
-grow_horizontal = 2
+offset_left = -125.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
 grow_vertical = 2
 text = "Encerrar Turno"
-label_settings = ExtResource("3_wug3p")
+
+[node name="ModalDescricao" type="PanelContainer" parent="CanvasLayer" unique_id=1714106413]
+custom_minimum_size = Vector2(400, 300)
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ModalDescricao" unique_id=1649770083]
+layout_mode = 2
+
+[node name="TextoNome" type="Label" parent="CanvasLayer/ModalDescricao/VBoxContainer" unique_id=220728384]
+layout_mode = 2
+
+[node name="TextoDescricao" type="Label" parent="CanvasLayer/ModalDescricao/VBoxContainer" unique_id=1979229515]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ModalDescricao/VBoxContainer" unique_id=1475189638]
+layout_mode = 2
+
+[node name="BotaoFechar" type="Button" parent="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer" unique_id=1717315739]
+layout_mode = 2
+text = "Voltar"
+
+[node name="BotaoJogar" type="Button" parent="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer" unique_id=670639558]
+layout_mode = 2
+text = "Usar Carta"
+
+[connection signal="pressed" from="CanvasLayer/TurnoButton" to="." method="_on_turno_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoFechar" to="." method="_on_botao_fechar_modal_pressed"]
+[connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar" to="." method="_on_botao_jogar_modal_pressed"]

@@ -7,6 +7,7 @@ const DESABILITA = false
 @onready var biblioteca: Control = $Biblioteca
 @onready var configuracoes: Control = $Configuracoes
 @onready var leituraCena: PackedScene = load("res://Cenas/Leitura.tscn")
+@onready var combateCena: PackedScene = load("res://Cenas/Combate.tscn")
 
 func _ready() -> void:
 	alternarElemento(HABILITA, biblioteca)
@@ -34,6 +35,7 @@ func _on_button_voltar_config_pressed() -> void:
 	alternarElemento(HABILITA, biblioteca)
 
 func _on_button_leitura_pressed() -> void:
-	alternarElemento(DESABILITA, menu)
-	alternarElemento(DESABILITA, biblioteca)
 	get_tree().change_scene_to_packed(leituraCena)
+
+func _on_button_combate_pressed() -> void:
+	get_tree().change_scene_to_packed(combateCena)

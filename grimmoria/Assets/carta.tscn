@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bv2af0vg6oyrl"]
+
+[ext_resource type="Script" uid="uid://y76otj4nu1r1" path="res://Assets/carta.gd" id="1_5my1o"]
+
+[node name="Carta" type="TextureButton" unique_id=2109284678]
+custom_minimum_size = Vector2(150, 220)
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_5my1o")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

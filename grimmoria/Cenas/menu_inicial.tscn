@@ -538,5 +538,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Menu/ControlConfig/ButtonConfig" to="." method="_on_button_config_pressed"]
 [connection signal="pressed" from="Menu/ControlLeitura/ButtonLeitura" to="." method="_on_button_leitura_pressed"]
 [connection signal="pressed" from="Biblioteca/CarouselControl/Livro/TextureButton" to="." method="_on_button_leitura_pressed"]
+[connection signal="pressed" from="Biblioteca/CarouselControl/Batalha/TextureButton" to="." method="_on_button_combate_pressed"]
 [connection signal="pressed" from="Biblioteca/CarouselControl/Config/TextureButton" to="." method="_on_button_config_pressed"]
 [connection signal="pressed" from="Configuracoes/ButtonVoltar" to="." method="_on_button_voltar_config_pressed"]
