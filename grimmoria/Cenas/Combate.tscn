@@ -4,10 +4,24 @@
 [ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/combate.gd" id="1_wug3p"]
 [ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
 [ext_resource type="Resource" uid="uid://b0p7o771bkjlb" path="res://Assets/Cartas/bolaDeFogo.tres" id="2_wug3p"]
+[ext_resource type="Script" uid="uid://cpny1x1o178x5" path="res://Cenas/StatusController.gd" id="5_siuw5"]
+[ext_resource type="Texture2D" uid="uid://ug7ljhogi6fv" path="res://Sprites/spritesheet-double.png" id="5_t8vnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
 atlas = ExtResource("2_803ca")
 region = Rect2(2, 1, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siuw5"]
+atlas = ExtResource("5_t8vnd")
+region = Rect2(1120, 448, 32.12256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bal3l"]
+atlas = ExtResource("5_t8vnd")
+region = Rect2(1120, 129, 32, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8biop"]
+atlas = ExtResource("5_t8vnd")
+region = Rect2(1120, 384, 32, 64)
 
 [node name="Combate" type="Node2D" unique_id=919140062]
 script = ExtResource("1_wug3p")
@@ -33,7 +47,32 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.06484375
 grow_horizontal = 2
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("5_siuw5")
 metadata/_edit_use_anchors_ = true
+
+[node name="HpBar" type="TextureProgressBar" parent="CanvasLayer/StatusTopo" unique_id=1797981928]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_top = 14
+stretch_margin_right = 16
+stretch_margin_bottom = 14
+texture_under = SubResource("AtlasTexture_siuw5")
+texture_progress = SubResource("AtlasTexture_bal3l")
+
+[node name="MpBar" type="TextureProgressBar" parent="CanvasLayer/StatusTopo" unique_id=1746075842]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_top = 14
+stretch_margin_right = 16
+stretch_margin_bottom = 14
+texture_under = SubResource("AtlasTexture_siuw5")
+texture_progress = SubResource("AtlasTexture_8biop")
 
 [node name="MaoJogador" type="HBoxContainer" parent="CanvasLayer" unique_id=575488525]
 anchors_preset = -1
@@ -59,6 +98,7 @@ grow_vertical = 2
 text = "Encerrar Turno"
 
 [node name="ModalDescricao" type="PanelContainer" parent="CanvasLayer" unique_id=1714106413]
+visible = false
 custom_minimum_size = Vector2(200, 150)
 offset_right = 200.0
 offset_bottom = 150.0
@@ -86,6 +126,7 @@ text = "Voltar"
 layout_mode = 2
 text = "Usar Carta"
 
+[connection signal="cartaUsada" from="." to="CanvasLayer/StatusTopo" method="use_mana"]
 [connection signal="pressed" from="CanvasLayer/TurnoButton" to="." method="_on_turno_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoFechar" to="." method="_on_botao_fechar_modal_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar" to="." method="_on_botao_jogar_modal_pressed"]

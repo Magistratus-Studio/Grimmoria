@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_3drnl")
+aoe = "1x1"
 imagem_da_carta = ExtResource("1_exgfc")
 metadata/_custom_type_script = "uid://7lqt15c7fviv"

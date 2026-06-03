@@ -1,5 +1,9 @@
 extends Node
 
+# Constantes mago
+const MAXVIDA:             int = 100
+const MAXMANA:             int = 3
+
 # Constantes indices roda sentimentos
 const INDC_TRISTEZA:    int = 0
 const INDC_SURPRESA:    int = 1
@@ -24,6 +28,9 @@ var xpSentimentos: Array[float] = [
 	0, #xp medo
 	0, #xp raiva
 ]
+
+var hp: int = MAXVIDA
+var mp: int = MAXMANA
 
 # --- SISTEMA DE ORIENTAÇÃO INTELIGENTE ---
 

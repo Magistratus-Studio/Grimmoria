@@ -1,5 +1,7 @@
 extends Node2D
 
+signal cartaUsada(mp: int)
+
 @onready var tileMap: TileMapLayer = $TileMapLayer
 # Referências dos nós do Modal
 @onready var modal_descricao: PanelContainer = $CanvasLayer/ModalDescricao
@@ -108,6 +110,14 @@ func _on_botao_jogar_modal_pressed() -> void:
 		
 		# 1. LÓGICA DO JOGO: (Exemplo) APLICAR DANOS / MANA AQUI...
 		# Seu código de redução de AP e dano vai aqui usando carta_selecionada_dados
+		if Globals.mp >= carta_selecionada_dados.custo_ap:
+			cartaUsada.emit(carta_selecionada_dados.custo_ap)
+		else: 
+			print("Mana insuficiente")
+			modal_descricao.visible = false
+			carta_selecionada_dados = null
+			carta_selecionada_no = null
+			return
 		
 		# 2. ADICIONAR À PILHA DE DESCARTE:
 		# Guarda os dados lógicos da carta na nossa lista de descarte antes de sumir com ela
