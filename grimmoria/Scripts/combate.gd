@@ -3,6 +3,7 @@ extends Node2D
 signal cartaUsada(mp: int)
 
 @onready var tileMap: TileMapLayer = $TileMapLayer
+@onready var destaqueMap: TileMapLayer = $DestaqueLayer
 # Referências dos nós do Modal
 @onready var modal_descricao: PanelContainer = $CanvasLayer/ModalDescricao
 @onready var modal_nome: Label = $CanvasLayer/ModalDescricao/VBoxContainer/TextoNome
@@ -30,6 +31,7 @@ func _ready() -> void:
 	var centro_monitor = get_window().size / 2
 	var deslocamentoVertical = Vector2i(0, int(centro_monitor[1] * 0.3))
 	tileMap.position = centro_monitor - deslocamentoVertical
+	destaqueMap.position = centro_monitor - deslocamentoVertical
 	
 	_inicializar_combate()
 	
@@ -55,7 +57,8 @@ func _on_combate_terminou(vitoria: bool) -> void:
 	get_tree().change_scene_to_file("res://Cenas/menu_inicial.tscn")
 
 func _on_turno_button_pressed() -> void:
-	_on_combate_terminou(true)
+	#_on_combate_terminou(true)
+	pass
 
 func comprar_carta(dados_da_carta: CardResource) -> void:
 	var nova_carta = cena_carta.instantiate()

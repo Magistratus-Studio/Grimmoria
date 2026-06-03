@@ -4,12 +4,30 @@
 [ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/combate.gd" id="1_wug3p"]
 [ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
 [ext_resource type="Resource" uid="uid://b0p7o771bkjlb" path="res://Assets/Cartas/bolaDeFogo.tres" id="2_wug3p"]
+[ext_resource type="Script" uid="uid://cx1ci7xxcbhbq" path="res://Cenas/jogadorController.gd" id="4_bal3l"]
 [ext_resource type="Script" uid="uid://cpny1x1o178x5" path="res://Cenas/StatusController.gd" id="5_siuw5"]
 [ext_resource type="Texture2D" uid="uid://ug7ljhogi6fv" path="res://Sprites/spritesheet-double.png" id="5_t8vnd"]
+[ext_resource type="Texture2D" uid="uid://dy6ucdnym0bmx" path="res://Sprites/combate/Group 101.svg" id="6_8biop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
 atlas = ExtResource("2_803ca")
 region = Rect2(2, 1, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skvce"]
+atlas = ExtResource("2_803ca")
+region = Rect2(200, 0, 24, 24)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_skvce"]
+texture = ExtResource("6_8biop")
+texture_region_size = Vector2i(111, 65)
+0:0/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8eml1"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(111, 65)
+sources/1 = SubResource("TileSetAtlasSource_skvce")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_siuw5"]
 atlas = ExtResource("5_t8vnd")
@@ -32,11 +50,20 @@ tile_map_data = PackedByteArray("AAD//wAAAgAAAAMAAAD+/wAAAgAAAAMAAAAAAAAAAgAAAAM
 tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
 
-[node name="Entidades" type="Node2D" parent="." unique_id=864216608]
+[node name="Entidades" type="Node2D" parent="TileMapLayer" unique_id=864216608]
+script = ExtResource("4_bal3l")
 
-[node name="Sprite2D" type="Sprite2D" parent="Entidades" unique_id=854776950]
+[node name="Jogador" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=854776950]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_t8vnd")
+
+[node name="Inimigo" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=1150931232]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_skvce")
+
+[node name="DestaqueLayer" type="TileMapLayer" parent="." unique_id=289071416]
+tile_set = SubResource("TileSet_8eml1")
+occlusion_enabled = false
 
 [node name="TurnManager" type="Node" parent="." unique_id=1153103016]
 
@@ -128,5 +155,6 @@ text = "Usar Carta"
 
 [connection signal="cartaUsada" from="." to="CanvasLayer/StatusTopo" method="use_mana"]
 [connection signal="pressed" from="CanvasLayer/TurnoButton" to="." method="_on_turno_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurnoButton" to="TileMapLayer/Entidades" method="_on_turno_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoFechar" to="." method="_on_botao_fechar_modal_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar" to="." method="_on_botao_jogar_modal_pressed"]
