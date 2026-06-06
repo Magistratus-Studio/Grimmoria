@@ -51,6 +51,7 @@ tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
 
 [node name="Entidades" type="Node2D" parent="TileMapLayer" unique_id=864216608]
+z_index = 1
 script = ExtResource("4_bal3l")
 
 [node name="Jogador" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=854776950]
