@@ -10,7 +10,7 @@ signal cartaUsada(mp: int)
 @onready var modal_descricao_texto: Label = $CanvasLayer/ModalDescricao/VBoxContainer/TextoDescricao
 
 @onready var mao_jogador: HBoxContainer = $CanvasLayer/MaoJogador
-var cena_carta = preload("res://Assets/carta.tscn") # Corrigido para .tscn
+var cena_carta = preload("res://Assets/Cartas/carta.tscn") # Corrigido para .tscn
 
 # Guarda temporariamente qual carta está aberta no modal
 var carta_selecionada_dados: CardResource = null
@@ -20,6 +20,8 @@ var carta_selecionada_no: TextureButton = null
 
 # NOVO: Lista que servirá como a sua pilha de descarte futuramente
 var pilha_de_descarte: Array[CardResource] = []
+
+@onready var maquinaEstados: Node = $TurnManager
 
 # Temporario
 @export var carta_teste: CardResource
@@ -46,6 +48,7 @@ func _ready() -> void:
 
 func _inicializar_combate() -> void:
 	print("Combate Iniciado em Modo Paisagem!")
+	maquinaEstados.init(self)
 
 func _on_combate_terminou(vitoria: bool) -> void:
 	if vitoria:
@@ -57,8 +60,7 @@ func _on_combate_terminou(vitoria: bool) -> void:
 	get_tree().change_scene_to_file("res://Cenas/menu_inicial.tscn")
 
 func _on_turno_button_pressed() -> void:
-	#_on_combate_terminou(true)
-	pass
+	maquinaEstados.processarTurno()
 
 func comprar_carta(dados_da_carta: CardResource) -> void:
 	var nova_carta = cena_carta.instantiate()
@@ -102,10 +104,13 @@ func _on_carta_selecionada(dados_da_carta: CardResource, no_da_carta: TextureBut
 	modal_descricao.global_position = nova_posicao_modal
 	modal_descricao.visible = true
 
-func _on_botao_fechar_modal_pressed() -> void:
+func fecharModal() -> void:
 	modal_descricao.visible = false
 	carta_selecionada_dados = null
 	carta_selecionada_no = null
+
+func _on_botao_fechar_modal_pressed() -> void:
+	fecharModal()
 
 func _on_botao_jogar_modal_pressed() -> void:
 	if carta_selecionada_dados and carta_selecionada_no:
@@ -117,9 +122,7 @@ func _on_botao_jogar_modal_pressed() -> void:
 			cartaUsada.emit(carta_selecionada_dados.custo_ap)
 		else: 
 			print("Mana insuficiente")
-			modal_descricao.visible = false
-			carta_selecionada_dados = null
-			carta_selecionada_no = null
+			fecharModal()
 			return
 		
 		# 2. ADICIONAR À PILHA DE DESCARTE:
@@ -132,6 +135,4 @@ func _on_botao_jogar_modal_pressed() -> void:
 		carta_selecionada_no.queue_free()
 		
 		# Limpa as referências e fecha o modal
-		modal_descricao.visible = false
-		carta_selecionada_dados = null
-		carta_selecionada_no = null
+		fecharModal()

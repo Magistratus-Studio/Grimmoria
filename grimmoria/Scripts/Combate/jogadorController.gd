@@ -24,9 +24,6 @@ func _ready() -> void:
 	destacarMovimento()
 
 
-#func _physics_process(delta: float) -> void:
-	#pass
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and not event.double_click:
 		var mousePos: Vector2 = event.position
@@ -46,6 +43,7 @@ func _input(event: InputEvent) -> void:
 func _on_turno_button_pressed() -> void:
 	condicaoMovimento = not condicaoMovimento
 	destacarMovimento()
+
 
 func destacarMovimento():
 	if condicaoMovimento:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5m8gdp250kwg"]
 
-[ext_resource type="Script" uid="uid://c1heef2l3ek48" path="res://Scripts/resultadoLeitura.gd" id="1_jsxsr"]
+[ext_resource type="Script" uid="uid://c1heef2l3ek48" path="res://Scripts/Leitura/resultadoLeitura.gd" id="1_jsxsr"]
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="1_nrkkn"]
 [ext_resource type="SpriteFrames" uid="uid://bbxfbj8tb1oxt" path="res://Assets/spritesResultadoLeitura.tres" id="3_iao1p"]
 

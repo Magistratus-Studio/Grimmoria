@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://b0p7o771bkjlb"]
 
-[ext_resource type="Script" uid="uid://7lqt15c7fviv" path="res://Scripts/cardResource.gd" id="1_3drnl"]
+[ext_resource type="Script" uid="uid://7lqt15c7fviv" path="res://Assets/Cartas/cardResource.gd" id="1_3drnl"]
 [ext_resource type="Texture2D" uid="uid://dkvfek6u3r5i4" path="res://Sprites/combate/cartaTemp.png" id="1_exgfc"]
 
 [resource]

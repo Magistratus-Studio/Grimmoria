@@ -1,13 +1,17 @@
 [gd_scene format=4 uid="uid://b2ihltekx1qa1"]
 
 [ext_resource type="TileSet" uid="uid://dt7etp7fj1nt0" path="res://Assets/tilesCombate.tres" id="1_nyvbu"]
-[ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/combate.gd" id="1_wug3p"]
+[ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/Combate/combate.gd" id="1_wug3p"]
 [ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
 [ext_resource type="Resource" uid="uid://b0p7o771bkjlb" path="res://Assets/Cartas/bolaDeFogo.tres" id="2_wug3p"]
-[ext_resource type="Script" uid="uid://cx1ci7xxcbhbq" path="res://Cenas/jogadorController.gd" id="4_bal3l"]
-[ext_resource type="Script" uid="uid://cpny1x1o178x5" path="res://Cenas/StatusController.gd" id="5_siuw5"]
+[ext_resource type="Script" uid="uid://cx1ci7xxcbhbq" path="res://Scripts/Combate/jogadorController.gd" id="4_bal3l"]
+[ext_resource type="Script" uid="uid://cpny1x1o178x5" path="res://Scripts/Combate/StatusController.gd" id="5_siuw5"]
 [ext_resource type="Texture2D" uid="uid://ug7ljhogi6fv" path="res://Sprites/spritesheet-double.png" id="5_t8vnd"]
 [ext_resource type="Texture2D" uid="uid://dy6ucdnym0bmx" path="res://Sprites/combate/Group 101.svg" id="6_8biop"]
+[ext_resource type="Script" uid="uid://c737xlwb28v8a" path="res://Assets/MaquinaEstados/MaquinaEstados.gd" id="7_skvce"]
+[ext_resource type="Script" uid="uid://d1av48kgh3js8" path="res://Assets/MaquinaEstados/turnoMago.gd" id="8_8eml1"]
+[ext_resource type="Script" uid="uid://dx7p8gfeq1852" path="res://Assets/MaquinaEstados/turnoInimigo.gd" id="9_c6din"]
+[ext_resource type="Script" uid="uid://dg1c6voeuauhj" path="res://Assets/MaquinaEstados/turnoFinalizar.gd" id="10_hag46"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
 atlas = ExtResource("2_803ca")
@@ -66,7 +70,21 @@ texture = SubResource("AtlasTexture_skvce")
 tile_set = SubResource("TileSet_8eml1")
 occlusion_enabled = false
 
-[node name="TurnManager" type="Node" parent="." unique_id=1153103016]
+[node name="TurnManager" type="Node" parent="." unique_id=1153103016 node_paths=PackedStringArray("estadoInicial")]
+script = ExtResource("7_skvce")
+estadoInicial = NodePath("TurnoMago")
+
+[node name="TurnoMago" type="Node" parent="TurnManager" unique_id=63060757 node_paths=PackedStringArray("proximoEstado")]
+script = ExtResource("8_8eml1")
+proximoEstado = NodePath("../TurnoInimigo")
+
+[node name="TurnoInimigo" type="Node" parent="TurnManager" unique_id=252391151 node_paths=PackedStringArray("proximoEstado")]
+script = ExtResource("9_c6din")
+proximoEstado = NodePath("../TurnoFinalizar")
+
+[node name="TurnoFinalizar" type="Node" parent="TurnManager" unique_id=1958828279 node_paths=PackedStringArray("proximoEstado")]
+script = ExtResource("10_hag46")
+proximoEstado = NodePath("../TurnoMago")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422047906]
 
