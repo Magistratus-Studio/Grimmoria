@@ -36,15 +36,7 @@ func _ready() -> void:
 	destaqueMap.position = centro_monitor - deslocamentoVertical
 	
 	_inicializar_combate()
-	
-	# TESTE AUTOMÁTICO: Carrega sua bola de fogo se ela estiver configurada no editor
-	# Se preferir usar o load(), mude para: comprar_carta(load("res://..."))
-	# Para este exemplo, assumindo que você chamará comprar_carta() de algum lugar
-	comprar_carta(carta_teste)
-	comprar_carta(carta_teste)
-	comprar_carta(carta_teste)
-	comprar_carta(carta_teste)
-	comprar_carta(carta_teste)
+
 
 func _inicializar_combate() -> void:
 	print("Combate Iniciado em Modo Paisagem!")
@@ -63,6 +55,10 @@ func _on_turno_button_pressed() -> void:
 	maquinaEstados.processarTurno()
 
 func comprar_carta(dados_da_carta: CardResource) -> void:
+	# COLOCAR DEPOIS: não permitir ações que possam aumentar o tamanho da mão quando estiver cheia
+	if mao_jogador.get_children().size() == 5:
+		print("Mão em tamanho máximo")
+		return
 	var nova_carta = cena_carta.instantiate()
 	nova_carta.dados = dados_da_carta
 	mao_jogador.add_child(nova_carta)
@@ -136,3 +132,11 @@ func _on_botao_jogar_modal_pressed() -> void:
 		
 		# Limpa as referências e fecha o modal
 		fecharModal()
+
+
+func _on_turno_mago_habilitar_carta() -> void:
+	mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_turno_mago_desabilitar_carta() -> void:
+	mao_jogador.process_mode = Node.PROCESS_MODE_DISABLED
+	fecharModal()

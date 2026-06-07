@@ -1,5 +1,13 @@
 extends Node
 
+# GRID
+# canto superior esquerdo: (-3,-3)
+# centro                 : (-1,0)
+# canto inferior direito : (1,3)
+const CENTER: Vector2i = Vector2i(-1,0)
+const SPAWNPLAYER: Vector2i = Vector2i(-1,3)
+const SPAWNINIMIGO: Vector2i = Vector2i(-1,-3)
+
 # Constantes mago
 const MAXVIDA:             int = 100
 const MAXMANA:             int = 3

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b32enl082xn8"]
+
+[ext_resource type="Shader" uid="uid://dl025exih1li8" path="res://Assets/shaderDestaqueMovimento.gdshader" id="1_u81b6"]
+
+[resource]
+shader = ExtResource("1_u81b6")
+shader_parameter/cor_destaque = Color(1, 1, 1, 0)
+shader_parameter/velocidade = 5.0
+shader_parameter/intensidade_minima = 0.1
+shader_parameter/intensidade_maxima = 0.8

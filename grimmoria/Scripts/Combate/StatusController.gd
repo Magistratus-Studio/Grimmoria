@@ -32,3 +32,9 @@ func _input(event: InputEvent) -> void:
 		take_damage(10)
 	if event is InputEventKey and event.pressed and event.keycode == KEY_1:
 		use_mana(10)
+
+
+func _on_turno_mago_maximizar_mana() -> void:
+	mp = MAXMP
+	mpBar.value = mp
+	Globals.mp = mp

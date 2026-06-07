@@ -4,14 +4,17 @@
 [ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/Combate/combate.gd" id="1_wug3p"]
 [ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
 [ext_resource type="Resource" uid="uid://b0p7o771bkjlb" path="res://Assets/Cartas/bolaDeFogo.tres" id="2_wug3p"]
-[ext_resource type="Script" uid="uid://cx1ci7xxcbhbq" path="res://Scripts/Combate/jogadorController.gd" id="4_bal3l"]
+[ext_resource type="Script" uid="uid://cx1ci7xxcbhbq" path="res://Scripts/Combate/entidadeController.gd" id="4_bal3l"]
 [ext_resource type="Script" uid="uid://cpny1x1o178x5" path="res://Scripts/Combate/StatusController.gd" id="5_siuw5"]
 [ext_resource type="Texture2D" uid="uid://ug7ljhogi6fv" path="res://Sprites/spritesheet-double.png" id="5_t8vnd"]
 [ext_resource type="Texture2D" uid="uid://dy6ucdnym0bmx" path="res://Sprites/combate/Group 101.svg" id="6_8biop"]
+[ext_resource type="Script" uid="uid://b1xgt1v4tkeu8" path="res://Scripts/Combate/jogadorController.gd" id="6_smc8k"]
 [ext_resource type="Script" uid="uid://c737xlwb28v8a" path="res://Assets/MaquinaEstados/MaquinaEstados.gd" id="7_skvce"]
+[ext_resource type="Material" uid="uid://b32enl082xn8" path="res://Assets/shaderDestaqueMovimento.tres" id="7_t4v4m"]
 [ext_resource type="Script" uid="uid://d1av48kgh3js8" path="res://Assets/MaquinaEstados/turnoMago.gd" id="8_8eml1"]
 [ext_resource type="Script" uid="uid://dx7p8gfeq1852" path="res://Assets/MaquinaEstados/turnoInimigo.gd" id="9_c6din"]
 [ext_resource type="Script" uid="uid://dg1c6voeuauhj" path="res://Assets/MaquinaEstados/turnoFinalizar.gd" id="10_hag46"]
+[ext_resource type="LabelSettings" uid="uid://cmd057lsx5dsu" path="res://Assets/TextosBotoes.tres" id="15_c7etf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
 atlas = ExtResource("2_803ca")
@@ -61,12 +64,14 @@ script = ExtResource("4_bal3l")
 [node name="Jogador" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=854776950]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_t8vnd")
+script = ExtResource("6_smc8k")
 
 [node name="Inimigo" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=1150931232]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_skvce")
 
 [node name="DestaqueLayer" type="TileMapLayer" parent="." unique_id=289071416]
+material = ExtResource("7_t4v4m")
 tile_set = SubResource("TileSet_8eml1")
 occlusion_enabled = false
 
@@ -76,6 +81,7 @@ estadoInicial = NodePath("TurnoMago")
 
 [node name="TurnoMago" type="Node" parent="TurnManager" unique_id=63060757 node_paths=PackedStringArray("proximoEstado")]
 script = ExtResource("8_8eml1")
+carta_teste = ExtResource("2_wug3p")
 proximoEstado = NodePath("../TurnoInimigo")
 
 [node name="TurnoInimigo" type="Node" parent="TurnManager" unique_id=252391151 node_paths=PackedStringArray("proximoEstado")]
@@ -119,6 +125,11 @@ stretch_margin_right = 16
 stretch_margin_bottom = 14
 texture_under = SubResource("AtlasTexture_siuw5")
 texture_progress = SubResource("AtlasTexture_8biop")
+
+[node name="Label" type="Label" parent="CanvasLayer/StatusTopo" unique_id=2147280699]
+layout_mode = 2
+text = "Turno do Mago"
+label_settings = ExtResource("15_c7etf")
 
 [node name="MaoJogador" type="HBoxContainer" parent="CanvasLayer" unique_id=575488525]
 anchors_preset = -1
@@ -173,6 +184,11 @@ layout_mode = 2
 text = "Usar Carta"
 
 [connection signal="cartaUsada" from="." to="CanvasLayer/StatusTopo" method="use_mana"]
+[connection signal="desabilitarCarta" from="TurnManager/TurnoMago" to="." method="_on_turno_mago_desabilitar_carta"]
+[connection signal="desabilitarMovimentacao" from="TurnManager/TurnoMago" to="TileMapLayer/Entidades/Jogador" method="_on_turno_mago_desabilitar_movimentacao"]
+[connection signal="habilitarCarta" from="TurnManager/TurnoMago" to="." method="_on_turno_mago_habilitar_carta"]
+[connection signal="habilitarMovimentacao" from="TurnManager/TurnoMago" to="TileMapLayer/Entidades/Jogador" method="_on_turno_mago_habilitar_movimentacao"]
+[connection signal="maximizarMana" from="TurnManager/TurnoMago" to="CanvasLayer/StatusTopo" method="_on_turno_mago_maximizar_mana"]
 [connection signal="pressed" from="CanvasLayer/TurnoButton" to="." method="_on_turno_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurnoButton" to="TileMapLayer/Entidades" method="_on_turno_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoFechar" to="." method="_on_botao_fechar_modal_pressed"]
