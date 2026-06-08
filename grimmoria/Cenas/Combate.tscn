@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b1xgt1v4tkeu8" path="res://Scripts/Combate/jogadorController.gd" id="6_smc8k"]
 [ext_resource type="Script" uid="uid://c737xlwb28v8a" path="res://Assets/MaquinaEstados/MaquinaEstados.gd" id="7_skvce"]
 [ext_resource type="Material" uid="uid://b32enl082xn8" path="res://Assets/shaderDestaqueMovimento.tres" id="7_t4v4m"]
+[ext_resource type="Script" uid="uid://c14qu1tereafo" path="res://Cenas/inimigosController.gd" id="7_w8p0a"]
 [ext_resource type="Script" uid="uid://d1av48kgh3js8" path="res://Assets/MaquinaEstados/turnoMago.gd" id="8_8eml1"]
 [ext_resource type="Script" uid="uid://dx7p8gfeq1852" path="res://Assets/MaquinaEstados/turnoInimigo.gd" id="9_c6din"]
 [ext_resource type="Script" uid="uid://dg1c6voeuauhj" path="res://Assets/MaquinaEstados/turnoFinalizar.gd" id="10_hag46"]
@@ -66,7 +67,22 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_t8vnd")
 script = ExtResource("6_smc8k")
 
-[node name="Inimigo" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=1150931232]
+[node name="Inimigos" type="Node2D" parent="TileMapLayer/Entidades" unique_id=1614998221]
+script = ExtResource("7_w8p0a")
+
+[node name="Inimigo" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=1150931232]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_skvce")
+
+[node name="Inimigo2" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=1688834973]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_skvce")
+
+[node name="Inimigo3" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=609582130]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_skvce")
+
+[node name="Inimigo4" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=737964685]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_skvce")
 
@@ -184,6 +200,9 @@ layout_mode = 2
 text = "Usar Carta"
 
 [connection signal="cartaUsada" from="." to="CanvasLayer/StatusTopo" method="use_mana"]
+[connection signal="destacarInimigos" from="." to="TileMapLayer/Entidades/Inimigos" method="_on_combate_destacar_inimigos"]
+[connection signal="limparDestaqueInimigos" from="." to="TileMapLayer/Entidades/Inimigos" method="_on_combate_limpar_destaque_inimigos"]
+[connection signal="posicionarInimigos" from="TileMapLayer/Entidades" to="TileMapLayer/Entidades/Inimigos" method="_on_entidades_posicionar_inimigos"]
 [connection signal="desabilitarCarta" from="TurnManager/TurnoMago" to="." method="_on_turno_mago_desabilitar_carta"]
 [connection signal="desabilitarMovimentacao" from="TurnManager/TurnoMago" to="TileMapLayer/Entidades/Jogador" method="_on_turno_mago_desabilitar_movimentacao"]
 [connection signal="habilitarCarta" from="TurnManager/TurnoMago" to="." method="_on_turno_mago_habilitar_carta"]

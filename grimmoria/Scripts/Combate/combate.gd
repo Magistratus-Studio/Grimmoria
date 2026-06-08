@@ -1,6 +1,8 @@
 extends Node2D
 
 signal cartaUsada(mp: int)
+signal destacarInimigos
+signal limparDestaqueInimigos
 
 @onready var tileMap: TileMapLayer = $TileMapLayer
 @onready var destaqueMap: TileMapLayer = $DestaqueLayer
@@ -104,6 +106,7 @@ func fecharModal() -> void:
 	modal_descricao.visible = false
 	carta_selecionada_dados = null
 	carta_selecionada_no = null
+	#limparDestaqueInimigos.emit()
 
 func _on_botao_fechar_modal_pressed() -> void:
 	fecharModal()
@@ -116,6 +119,14 @@ func _on_botao_jogar_modal_pressed() -> void:
 		# Seu código de redução de AP e dano vai aqui usando carta_selecionada_dados
 		if Globals.mp >= carta_selecionada_dados.custo_ap:
 			cartaUsada.emit(carta_selecionada_dados.custo_ap)
+			match carta_selecionada_dados.tipo:
+				"Ataque":
+					print("Magia de ataque")
+					destacarInimigos.emit()
+				"Defesa":
+					print("Magia de defesa")
+				"Especial":
+					print("Magia especial")
 		else: 
 			print("Mana insuficiente")
 			fecharModal()
