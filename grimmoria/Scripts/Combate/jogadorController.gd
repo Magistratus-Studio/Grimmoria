@@ -21,7 +21,7 @@ func destacarMovimento() -> void:
 	for vizinho in vizinhos:
 		var data = tileMap.get_cell_tile_data(vizinho)
 		if data:
-			destaqueLayer.set_cell(vizinho, 1, Vector2i(0,0))
+			destaqueLayer.set_cell(vizinho, 0, Vector2i(0,0))
 
 func limparMovimento() -> void:
 	for vizinho in vizinhos:

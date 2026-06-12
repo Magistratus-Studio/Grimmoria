@@ -40,6 +40,7 @@ var xpSentimentos: Array[float] = [
 var hp: int = MAXVIDA
 var mp: int = MAXMANA
 
+var inimigos: Array[Node]
 # --- SISTEMA DE ORIENTAÇÃO INTELIGENTE ---
 
 func definir_orientacao(paisagem: bool) -> void:

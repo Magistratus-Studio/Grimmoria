@@ -1,8 +1,13 @@
 extends Node2D
 
 signal cartaUsada(mp: int)
-signal destacarInimigos
+signal destacarInimigos(aoe: String)
 signal limparDestaqueInimigos
+signal inimigoSelecionado(posicao: Vector2i)
+
+@onready var maquinaEstados: Node = $TurnManager
+
+@onready var botaoTurno: Button = $CanvasLayer/TurnoButton
 
 @onready var tileMap: TileMapLayer = $TileMapLayer
 @onready var destaqueMap: TileMapLayer = $DestaqueLayer
@@ -12,7 +17,7 @@ signal limparDestaqueInimigos
 @onready var modal_descricao_texto: Label = $CanvasLayer/ModalDescricao/VBoxContainer/TextoDescricao
 
 @onready var mao_jogador: HBoxContainer = $CanvasLayer/MaoJogador
-var cena_carta = preload("res://Assets/Cartas/carta.tscn") # Corrigido para .tscn
+var cena_carta = preload("res://Assets/Cartas/carta.tscn")
 
 # Guarda temporariamente qual carta está aberta no modal
 var carta_selecionada_dados: CardResource = null
@@ -23,10 +28,7 @@ var carta_selecionada_no: TextureButton = null
 # NOVO: Lista que servirá como a sua pilha de descarte futuramente
 var pilha_de_descarte: Array[CardResource] = []
 
-@onready var maquinaEstados: Node = $TurnManager
-
-# Temporario
-@export var carta_teste: CardResource
+var podeAtacar: bool = false
 
 func _ready() -> void:
 	Globals.definir_orientacao(Globals.PAISAGEM)
@@ -39,6 +41,15 @@ func _ready() -> void:
 	
 	_inicializar_combate()
 
+func _input(event: InputEvent) -> void:
+	if podeAtacar:
+		if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and not event.double_click:
+			var mousePos: Vector2 = event.position
+			var mousePosMapa: Vector2i = tileMap.local_to_map(tileMap.to_local(mousePos))
+			for inimigo in Globals.inimigos:
+				if mousePosMapa == tileMap.local_to_map(inimigo.position) and tileMap.get_cell_tile_data(mousePosMapa):
+					podeAtacar = false
+					inimigoSelecionado.emit(tileMap.local_to_map(inimigo.position))
 
 func _inicializar_combate() -> void:
 	print("Combate Iniciado em Modo Paisagem!")
@@ -117,12 +128,16 @@ func _on_botao_jogar_modal_pressed() -> void:
 		
 		# 1. LÓGICA DO JOGO: (Exemplo) APLICAR DANOS / MANA AQUI...
 		# Seu código de redução de AP e dano vai aqui usando carta_selecionada_dados
+		#botaoTurno.visible = false
+		botaoTurno.process_mode = Node.PROCESS_MODE_DISABLED
+		mao_jogador.process_mode = Node.PROCESS_MODE_DISABLED
+		
 		if Globals.mp >= carta_selecionada_dados.custo_ap:
 			cartaUsada.emit(carta_selecionada_dados.custo_ap)
 			match carta_selecionada_dados.tipo:
 				"Ataque":
-					print("Magia de ataque")
-					destacarInimigos.emit()
+					destacarInimigos.emit(carta_selecionada_dados.aoe)
+					executarAtaque(carta_selecionada_dados.valor_dano, carta_selecionada_dados.aoe)
 				"Defesa":
 					print("Magia de defesa")
 				"Especial":
@@ -144,6 +159,12 @@ func _on_botao_jogar_modal_pressed() -> void:
 		# Limpa as referências e fecha o modal
 		fecharModal()
 
+
+func executarAtaque(dano: int, aoe: String) -> void:
+	print("Magia de ataque")
+	podeAtacar = true
+	await inimigoSelecionado
+	print("Dano Causado: ", dano, " em ", aoe)
 
 func _on_turno_mago_habilitar_carta() -> void:
 	mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT

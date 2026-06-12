@@ -8,4 +8,3 @@ signal posicionarInimigos(tileMap: TileMapLayer)
 func _ready() -> void:
 	jogador.position = tileMap.map_to_local(Globals.SPAWNPLAYER)
 	posicionarInimigos.emit(tileMap)
-	#inimigo.position = tileMap.map_to_local(Globals.SPAWNINIMIGO)

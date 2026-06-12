@@ -5,6 +5,6 @@
 [resource]
 shader = ExtResource("1_u81b6")
 shader_parameter/cor_destaque = Color(1, 1, 1, 0)
-shader_parameter/velocidade = 5.0
+shader_parameter/velocidade = 4.0
 shader_parameter/intensidade_minima = 0.1
-shader_parameter/intensidade_maxima = 0.8
+shader_parameter/intensidade_maxima = 0.3
