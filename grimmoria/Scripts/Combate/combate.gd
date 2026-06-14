@@ -11,6 +11,7 @@ signal inimigoSelecionado(posicao: Vector2i)
 
 @onready var tileMap: TileMapLayer = $TileMapLayer
 @onready var destaqueMap: TileMapLayer = $DestaqueLayer
+@onready var fundoMap: TileMapLayer = $FundoLayer
 # Referências dos nós do Modal
 @onready var modal_descricao: PanelContainer = $CanvasLayer/ModalDescricao
 @onready var modal_nome: Label = $CanvasLayer/ModalDescricao/VBoxContainer/TextoNome
@@ -38,6 +39,7 @@ func _ready() -> void:
 	var deslocamentoVertical = Vector2i(0, int(centro_monitor[1] * 0.3))
 	tileMap.position = centro_monitor - deslocamentoVertical
 	destaqueMap.position = centro_monitor - deslocamentoVertical
+	fundoMap.position = centro_monitor - deslocamentoVertical
 	
 	_inicializar_combate()
 
