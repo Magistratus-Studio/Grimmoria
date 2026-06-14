@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy6ucdnym0bmx"
-path="res://.godot/imported/Group 101.svg-fcaa0dd11fc59a80654f76052f5f267a.ctex"
+uid="uid://b7ch0cx422ifj"
+path="res://.godot/imported/Enemy - 001_Ghost.png-c425878e887dac7dec0279a13b6c8fd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/combate/Group 101.svg"
-dest_files=["res://.godot/imported/Group 101.svg-fcaa0dd11fc59a80654f76052f5f267a.ctex"]
+source_file="res://Sprites/combate/Enemy - 001_Ghost.png"
+dest_files=["res://.godot/imported/Enemy - 001_Ghost.png-c425878e887dac7dec0279a13b6c8fd9.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

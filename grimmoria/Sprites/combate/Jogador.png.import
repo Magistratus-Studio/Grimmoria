@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cspvnirqlv1v3"
-path="res://.godot/imported/vector_complete.svg-0336085219bce185dc609a0b2edeed21.ctex"
+uid="uid://bm0fow5x7mjjw"
+path="res://.godot/imported/Jogador.png-81f880eccc43f30eab2b87b413455a6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/combate/vector_complete.svg"
-dest_files=["res://.godot/imported/vector_complete.svg-0336085219bce185dc609a0b2edeed21.ctex"]
+source_file="res://Sprites/combate/Jogador.png"
+dest_files=["res://.godot/imported/Jogador.png-81f880eccc43f30eab2b87b413455a6c.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

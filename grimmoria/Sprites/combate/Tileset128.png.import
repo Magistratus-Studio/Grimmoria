@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgfgt7rxsntbl"
-path="res://.godot/imported/camadaDestaque.svg-3c3d269a57ec911c069073863f0f663a.ctex"
+uid="uid://cnat08u67qvw2"
+path="res://.godot/imported/Tileset128.png-d81cdbe99e141d7cb020288b0fcd3d3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/combate/camadaDestaque.svg"
-dest_files=["res://.godot/imported/camadaDestaque.svg-3c3d269a57ec911c069073863f0f663a.ctex"]
+source_file="res://Sprites/combate/Tileset128.png"
+dest_files=["res://.godot/imported/Tileset128.png-d81cdbe99e141d7cb020288b0fcd3d3a.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -2,12 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://dt7etp7fj1nt0" path="res://Assets/tilesCombate.tres" id="1_nyvbu"]
 [ext_resource type="Script" uid="uid://dh2lm161qctcj" path="res://Scripts/Combate/combate.gd" id="1_wug3p"]
-[ext_resource type="Texture2D" uid="uid://du3i4lu4eeaai" path="res://Sprites/leitura/tilemap-characters.png" id="2_803ca"]
 [ext_resource type="Resource" uid="uid://b0p7o771bkjlb" path="res://Assets/Cartas/bolaDeFogo.tres" id="2_wug3p"]
 [ext_resource type="Script" uid="uid://cx1ci7xxcbhbq" path="res://Scripts/Combate/entidadeController.gd" id="4_bal3l"]
+[ext_resource type="Texture2D" uid="uid://bm0fow5x7mjjw" path="res://Sprites/combate/Jogador.png" id="4_w8p0a"]
 [ext_resource type="Script" uid="uid://cpny1x1o178x5" path="res://Scripts/Combate/StatusController.gd" id="5_siuw5"]
 [ext_resource type="Texture2D" uid="uid://ug7ljhogi6fv" path="res://Sprites/spritesheet-double.png" id="5_t8vnd"]
 [ext_resource type="Script" uid="uid://b1xgt1v4tkeu8" path="res://Scripts/Combate/jogadorController.gd" id="6_smc8k"]
+[ext_resource type="Texture2D" uid="uid://b7ch0cx422ifj" path="res://Sprites/combate/Enemy - 001_Ghost.png" id="7_eoejp"]
 [ext_resource type="Script" uid="uid://c737xlwb28v8a" path="res://Assets/MaquinaEstados/MaquinaEstados.gd" id="7_skvce"]
 [ext_resource type="Material" uid="uid://b32enl082xn8" path="res://Assets/shaderDestaqueMovimento.tres" id="7_t4v4m"]
 [ext_resource type="Script" uid="uid://c14qu1tereafo" path="res://Cenas/inimigosController.gd" id="7_w8p0a"]
@@ -17,12 +18,12 @@
 [ext_resource type="LabelSettings" uid="uid://cmd057lsx5dsu" path="res://Assets/TextosBotoes.tres" id="15_c7etf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
-atlas = ExtResource("2_803ca")
-region = Rect2(2, 1, 20, 23)
+atlas = ExtResource("4_w8p0a")
+region = Rect2(144, 32, 112, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skvce"]
-atlas = ExtResource("2_803ca")
-region = Rect2(200, 0, 24, 24)
+atlas = ExtResource("7_eoejp")
+region = Rect2(400, 4, 84, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_siuw5"]
 atlas = ExtResource("5_t8vnd")
@@ -40,7 +41,6 @@ region = Rect2(1120, 384, 32, 64)
 script = ExtResource("1_wug3p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=178409547]
-scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAEAAAD//wAAAAAAAAEAAAAAAAAAAAAAAAEAAAD9/wAAAAAAAAEAAAABAAAAAAAAAAEAAAD9/wEAAAAAAAEAAAD+/wEAAAAAAAEAAAD//wEAAAAAAAEAAAAAAAEAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAAAAAIAAAAAAAEAAAD//wIAAAAAAAEAAAD9/wIAAAAAAAEAAAD+/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD+/wMAAAAAAAEAAAD//wMAAAAAAAEAAAAAAAMAAAAAAAEAAAABAAMAAAAAAAEAAAD9////AAAAAAEAAAD+////AAAAAAEAAAD/////AAAAAAEAAAAAAP//AAAAAAEAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAAAAP7/AAAAAAEAAAD///7/AAAAAAEAAAD+//7/AAAAAAEAAAD9//7/AAAAAAEAAAD9//3/AAAAAAEAAAD+//3/AAAAAAEAAAD///3/AAAAAAEAAAAAAP3/AAAAAAEAAAABAP3/AAAAAAEAAAA=")
 tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
@@ -50,32 +50,41 @@ z_index = 1
 script = ExtResource("4_bal3l")
 
 [node name="Jogador" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=854776950]
+position = Vector2(0, 23)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_t8vnd")
+offset = Vector2(0, -46)
 script = ExtResource("6_smc8k")
 
 [node name="Inimigos" type="Node2D" parent="TileMapLayer/Entidades" unique_id=1614998221]
 script = ExtResource("7_w8p0a")
 
 [node name="Inimigo" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=1150931232]
+position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
+offset = Vector2(0, -28)
 
 [node name="Inimigo2" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=1688834973]
+position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
+offset = Vector2(0, -28)
 
 [node name="Inimigo3" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=609582130]
+position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
+offset = Vector2(0, -28)
 
 [node name="Inimigo4" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=737964685]
+position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
+offset = Vector2(0, -28)
 
 [node name="DestaqueLayer" type="TileMapLayer" parent="." unique_id=289071416]
 material = ExtResource("7_t4v4m")
-scale = Vector2(4, 4)
 tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
 
