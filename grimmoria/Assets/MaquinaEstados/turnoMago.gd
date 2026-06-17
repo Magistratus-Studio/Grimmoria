@@ -8,14 +8,11 @@ signal desabilitarCarta()
 
 @export var carta_teste: CardResource
 
-# comprar 5 cartas
-# mana no máximo
 func entrar() -> void:
 	print("Entrou no turno do mago")
 	
 	for i in 5:
-		# falta comprar do baralho de compra
-		pai.comprar_carta(carta_teste)
+		pai.comprar_carta()
 	
 	maximizarMana.emit()
 	habilitarMovimentacao.emit()

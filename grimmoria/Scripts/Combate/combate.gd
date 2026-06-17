@@ -4,12 +4,13 @@ signal cartaUsada(mp: int)
 signal destacarInimigos(aoe: String)
 signal limparDestaqueInimigos
 signal inimigoSelecionado(posicao: Vector2i)
+signal tratarInimigo(posicaoSelecionada: Vector2i, dano: int, aoe: String)
 
 @onready var maquinaEstados: Node = $TurnManager
 
 @onready var botaoTurno: Button = $CanvasLayer/TurnoButton
 
-@onready var tileMap: TileMapLayer = $TileMapLayer
+@onready var gameMap: TileMapLayer = $GameLayer
 @onready var destaqueMap: TileMapLayer = $DestaqueLayer
 @onready var fundoMap: TileMapLayer = $FundoLayer
 # Referências dos nós do Modal
@@ -28,6 +29,7 @@ var carta_selecionada_no: TextureButton = null
 
 # NOVO: Lista que servirá como a sua pilha de descarte futuramente
 var pilha_de_descarte: Array[CardResource] = []
+var pilhaDeCompra: Array[CardResource]
 
 var podeAtacar: bool = false
 
@@ -37,7 +39,7 @@ func _ready() -> void:
 	
 	var centro_monitor = get_window().size / 2
 	var deslocamentoVertical = Vector2i(0, int(centro_monitor[1] * 0.3))
-	tileMap.position = centro_monitor - deslocamentoVertical
+	gameMap.position = centro_monitor - deslocamentoVertical
 	destaqueMap.position = centro_monitor - deslocamentoVertical
 	fundoMap.position = centro_monitor - deslocamentoVertical
 	
@@ -47,14 +49,16 @@ func _input(event: InputEvent) -> void:
 	if podeAtacar:
 		if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and not event.double_click:
 			var mousePos: Vector2 = event.position
-			var mousePosMapa: Vector2i = tileMap.local_to_map(tileMap.to_local(mousePos))
+			var mousePosMapa: Vector2i = gameMap.local_to_map(gameMap.to_local(mousePos))
 			for inimigo in Globals.inimigos:
-				if mousePosMapa == tileMap.local_to_map(inimigo.position) and tileMap.get_cell_tile_data(mousePosMapa):
+				if mousePosMapa == gameMap.local_to_map(inimigo.position) and gameMap.get_cell_tile_data(mousePosMapa):
 					podeAtacar = false
-					inimigoSelecionado.emit(tileMap.local_to_map(inimigo.position))
+					inimigoSelecionado.emit(gameMap.local_to_map(inimigo.position))
 
 func _inicializar_combate() -> void:
 	print("Combate Iniciado em Modo Paisagem!")
+	pilhaDeCompra = Globals.baralho
+	pilhaDeCompra.shuffle()
 	maquinaEstados.init(self)
 
 func _on_combate_terminou(vitoria: bool) -> void:
@@ -69,10 +73,15 @@ func _on_combate_terminou(vitoria: bool) -> void:
 func _on_turno_button_pressed() -> void:
 	maquinaEstados.processarTurno()
 
-func comprar_carta(dados_da_carta: CardResource) -> void:
+func comprar_carta() -> void:
+	var dados_da_carta: CardResource = pilhaDeCompra.pop_back()
+	$CanvasLayer/StatusTopo/Label2.text = "Cartas na pilha de compra: " + str(pilhaDeCompra.size())
 	# COLOCAR DEPOIS: não permitir ações que possam aumentar o tamanho da mão quando estiver cheia
 	if mao_jogador.get_children().size() == 5:
-		print("Mão em tamanho máximo")
+		print("Mão em cheia")
+		return
+	if !dados_da_carta:
+		print("Mão vazia")
 		return
 	var nova_carta = cena_carta.instantiate()
 	nova_carta.dados = dados_da_carta
@@ -126,7 +135,6 @@ func _on_botao_fechar_modal_pressed() -> void:
 
 func _on_botao_jogar_modal_pressed() -> void:
 	if carta_selecionada_dados and carta_selecionada_no:
-		print("Executando o efeito da carta: ", carta_selecionada_dados.nome)
 		
 		# 1. LÓGICA DO JOGO: (Exemplo) APLICAR DANOS / MANA AQUI...
 		# Seu código de redução de AP e dano vai aqui usando carta_selecionada_dados
@@ -135,6 +143,7 @@ func _on_botao_jogar_modal_pressed() -> void:
 		mao_jogador.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		if Globals.mp >= carta_selecionada_dados.custo_ap:
+			print("Executando o efeito da carta: ", carta_selecionada_dados.nome)
 			cartaUsada.emit(carta_selecionada_dados.custo_ap)
 			match carta_selecionada_dados.tipo:
 				"Ataque":
@@ -147,6 +156,8 @@ func _on_botao_jogar_modal_pressed() -> void:
 		else: 
 			print("Mana insuficiente")
 			fecharModal()
+			botaoTurno.process_mode = Node.PROCESS_MODE_INHERIT
+			mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT
 			return
 		
 		# 2. ADICIONAR À PILHA DE DESCARTE:
@@ -165,8 +176,11 @@ func _on_botao_jogar_modal_pressed() -> void:
 func executarAtaque(dano: int, aoe: String) -> void:
 	print("Magia de ataque")
 	podeAtacar = true
-	await inimigoSelecionado
-	print("Dano Causado: ", dano, " em ", aoe)
+	var posicaoSelecionada = await inimigoSelecionado
+	botaoTurno.process_mode = Node.PROCESS_MODE_INHERIT
+	mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT
+	limparDestaqueInimigos.emit()
+	tratarInimigo.emit(posicaoSelecionada, dano, aoe)
 
 func _on_turno_mago_habilitar_carta() -> void:
 	mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT

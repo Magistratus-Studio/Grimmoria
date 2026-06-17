@@ -41,6 +41,11 @@ var hp: int = MAXVIDA
 var mp: int = MAXMANA
 
 var inimigos: Array[Node]
+
+var card1 = load("res://Assets/Cartas/bolaDeFogo.tres")
+var card2 = load("res://Assets/Cartas/bolaDeVeneno.tres")
+var baralho: Array[CardResource] = [card1, card1, card1, card1, card1, card1, card2, card2, card2, card2, card2]
+
 # --- SISTEMA DE ORIENTAÇÃO INTELIGENTE ---
 
 func definir_orientacao(paisagem: bool) -> void:

@@ -1,10 +1,10 @@
 extends Node2D
 
-signal posicionarInimigos(tileMap: TileMapLayer)
+signal posicionarInimigos(gameMap: TileMapLayer)
 
-@onready var tileMap: TileMapLayer = $".."
+@onready var gameMap: TileMapLayer = $".."
 @onready var jogador: Sprite2D = $Jogador
 
 func _ready() -> void:
-	jogador.position = tileMap.map_to_local(Globals.SPAWNPLAYER)
-	posicionarInimigos.emit(tileMap)
+	jogador.position = gameMap.map_to_local(Globals.SPAWNPLAYER)
+	posicionarInimigos.emit(gameMap)

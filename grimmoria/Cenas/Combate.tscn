@@ -45,44 +45,44 @@ tile_map_data = PackedByteArray("AAACAAMAAAABAAMAAAACAAIAAAABAAMAAAADAAIAAAABAAM
 tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=178409547]
+[node name="GameLayer" type="TileMapLayer" parent="." unique_id=178409547]
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAEAAAD//wAAAAAAAAEAAAAAAAAAAAAAAAEAAAD9/wAAAAAAAAEAAAABAAAAAAAAAAEAAAD9/wEAAAAAAAEAAAD+/wEAAAAAAAEAAAD//wEAAAAAAAEAAAAAAAEAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAAAAAIAAAAAAAEAAAD//wIAAAAAAAEAAAD9/wIAAAAAAAEAAAD+/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD+/wMAAAAAAAEAAAD//wMAAAAAAAEAAAAAAAMAAAAAAAEAAAABAAMAAAAAAAEAAAD9////AAAAAAEAAAD+////AAAAAAEAAAD/////AAAAAAEAAAAAAP//AAAAAAEAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAAAAP7/AAAAAAEAAAD///7/AAAAAAEAAAD+//7/AAAAAAEAAAD9//7/AAAAAAEAAAD9//3/AAAAAAEAAAD+//3/AAAAAAEAAAD///3/AAAAAAEAAAAAAP3/AAAAAAEAAAABAP3/AAAAAAEAAAA=")
 tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
 
-[node name="Entidades" type="Node2D" parent="TileMapLayer" unique_id=864216608]
+[node name="Entidades" type="Node2D" parent="GameLayer" unique_id=864216608]
 z_index = 1
 script = ExtResource("4_bal3l")
 
-[node name="Jogador" type="Sprite2D" parent="TileMapLayer/Entidades" unique_id=854776950]
+[node name="Jogador" type="Sprite2D" parent="GameLayer/Entidades" unique_id=854776950]
 position = Vector2(0, 23)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_t8vnd")
 offset = Vector2(0, -46)
 script = ExtResource("6_smc8k")
 
-[node name="Inimigos" type="Node2D" parent="TileMapLayer/Entidades" unique_id=1614998221]
+[node name="Inimigos" type="Node2D" parent="GameLayer/Entidades" unique_id=1614998221]
 script = ExtResource("7_w8p0a")
 
-[node name="Inimigo" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=1150931232]
+[node name="Inimigo" type="Sprite2D" parent="GameLayer/Entidades/Inimigos" unique_id=1150931232]
 position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
 offset = Vector2(0, -28)
 
-[node name="Inimigo2" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=1688834973]
+[node name="Inimigo2" type="Sprite2D" parent="GameLayer/Entidades/Inimigos" unique_id=1688834973]
 position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
 offset = Vector2(0, -28)
 
-[node name="Inimigo3" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=609582130]
+[node name="Inimigo3" type="Sprite2D" parent="GameLayer/Entidades/Inimigos" unique_id=609582130]
 position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
 offset = Vector2(0, -28)
 
-[node name="Inimigo4" type="Sprite2D" parent="TileMapLayer/Entidades/Inimigos" unique_id=737964685]
+[node name="Inimigo4" type="Sprite2D" parent="GameLayer/Entidades/Inimigos" unique_id=737964685]
 position = Vector2(0, 14)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_skvce")
@@ -149,6 +149,11 @@ layout_mode = 2
 text = "Turno do Mago"
 label_settings = ExtResource("15_c7etf")
 
+[node name="Label2" type="Label" parent="CanvasLayer/StatusTopo" unique_id=896380277]
+layout_mode = 2
+text = "Cartas na pilha de compra: "
+label_settings = ExtResource("15_c7etf")
+
 [node name="MaoJogador" type="HBoxContainer" parent="CanvasLayer" unique_id=575488525]
 anchors_preset = -1
 anchor_top = 0.9164063
@@ -202,15 +207,17 @@ layout_mode = 2
 text = "Usar Carta"
 
 [connection signal="cartaUsada" from="." to="CanvasLayer/StatusTopo" method="use_mana"]
-[connection signal="destacarInimigos" from="." to="TileMapLayer/Entidades/Inimigos" method="_on_combate_destacar_inimigos"]
-[connection signal="limparDestaqueInimigos" from="." to="TileMapLayer/Entidades/Inimigos" method="_on_combate_limpar_destaque_inimigos"]
-[connection signal="posicionarInimigos" from="TileMapLayer/Entidades" to="TileMapLayer/Entidades/Inimigos" method="_on_entidades_posicionar_inimigos"]
+[connection signal="destacarInimigos" from="." to="GameLayer/Entidades/Inimigos" method="_on_combate_destacar_inimigos"]
+[connection signal="limparDestaqueInimigos" from="." to="GameLayer/Entidades/Inimigos" method="_on_combate_limpar_destaque_inimigos"]
+[connection signal="tratarInimigo" from="." to="GameLayer/Entidades/Inimigos" method="_on_combate_tratar_inimigo"]
+[connection signal="posicionarInimigos" from="GameLayer/Entidades" to="GameLayer/Entidades/Inimigos" method="_on_entidades_posicionar_inimigos"]
+[connection signal="finalizarCombate" from="GameLayer/Entidades/Inimigos" to="." method="_on_combate_terminou"]
 [connection signal="desabilitarCarta" from="TurnManager/TurnoMago" to="." method="_on_turno_mago_desabilitar_carta"]
-[connection signal="desabilitarMovimentacao" from="TurnManager/TurnoMago" to="TileMapLayer/Entidades/Jogador" method="_on_turno_mago_desabilitar_movimentacao"]
+[connection signal="desabilitarMovimentacao" from="TurnManager/TurnoMago" to="GameLayer/Entidades/Jogador" method="_on_turno_mago_desabilitar_movimentacao"]
 [connection signal="habilitarCarta" from="TurnManager/TurnoMago" to="." method="_on_turno_mago_habilitar_carta"]
-[connection signal="habilitarMovimentacao" from="TurnManager/TurnoMago" to="TileMapLayer/Entidades/Jogador" method="_on_turno_mago_habilitar_movimentacao"]
+[connection signal="habilitarMovimentacao" from="TurnManager/TurnoMago" to="GameLayer/Entidades/Jogador" method="_on_turno_mago_habilitar_movimentacao"]
 [connection signal="maximizarMana" from="TurnManager/TurnoMago" to="CanvasLayer/StatusTopo" method="_on_turno_mago_maximizar_mana"]
 [connection signal="pressed" from="CanvasLayer/TurnoButton" to="." method="_on_turno_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/TurnoButton" to="TileMapLayer/Entidades" method="_on_turno_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurnoButton" to="GameLayer/Entidades" method="_on_turno_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoFechar" to="." method="_on_botao_fechar_modal_pressed"]
 [connection signal="pressed" from="CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar" to="." method="_on_botao_jogar_modal_pressed"]
