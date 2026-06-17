@@ -74,15 +74,18 @@ func _on_turno_button_pressed() -> void:
 	maquinaEstados.processarTurno()
 
 func comprar_carta() -> void:
-	var dados_da_carta: CardResource = pilhaDeCompra.pop_back()
-	$CanvasLayer/StatusTopo/Label2.text = "Cartas na pilha de compra: " + str(pilhaDeCompra.size())
 	# COLOCAR DEPOIS: não permitir ações que possam aumentar o tamanho da mão quando estiver cheia
 	if mao_jogador.get_children().size() == 5:
 		print("Mão em cheia")
 		return
+	
+	var dados_da_carta: CardResource = pilhaDeCompra.pop_back()
+	$CanvasLayer/StatusTopo/Label2.text = "Cartas na pilha de compra: " + str(pilhaDeCompra.size())
+	
 	if !dados_da_carta:
 		print("Mão vazia")
 		return
+	
 	var nova_carta = cena_carta.instantiate()
 	nova_carta.dados = dados_da_carta
 	mao_jogador.add_child(nova_carta)
