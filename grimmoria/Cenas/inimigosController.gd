@@ -32,21 +32,18 @@ func _on_combate_destacar_inimigos(aoe: String) -> void:
 			"3x3":
 				for pos in Globals.GRID3X3:
 					posicao = DestaqueLayerInimigo.local_to_map(inimigo.position) + pos
-					posicao.x = clampi(posicao.x, -3, 1)
-					posicao.y = clampi(posicao.y, -3, 3)
-					DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
+					if posicao.x >= -3 and posicao.x <= 1 and posicao.y >= -3 and posicao.y <= 3:
+						DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
 			"Cruz":
 				for pos in Globals.GRIDCRUZ:
 					posicao = DestaqueLayerInimigo.local_to_map(inimigo.position) + pos
-					posicao.x = clampi(posicao.x, -3, 1)
-					posicao.y = clampi(posicao.y, -3, 3)
-					DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
-			"Diagonal":
+					if posicao.x >= -3 and posicao.x <= 1 and posicao.y >= -3 and posicao.y <= 3:
+						DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
+			"Diagonais":
 				for pos in Globals.GRIDDIAGONAL:
 					posicao = DestaqueLayerInimigo.local_to_map(inimigo.position) + pos
-					posicao.x = clampi(posicao.x, -3, 1)
-					posicao.y = clampi(posicao.y, -3, 3)
-					DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
+					if posicao.x >= -3 and posicao.x <= 1 and posicao.y >= -3 and posicao.y <= 3:
+						DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
 
 
 func _on_combate_limpar_destaque_inimigos() -> void:

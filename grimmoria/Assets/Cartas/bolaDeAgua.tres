@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://beltfbr614422"]
+
+[ext_resource type="Script" uid="uid://7lqt15c7fviv" path="res://Assets/Cartas/cardResource.gd" id="1_2id75"]
+[ext_resource type="Texture2D" uid="uid://dtu2ccqbkt3gv" path="res://Sprites/combate/cartaTempDiagonal.png" id="1_dq8gu"]
+
+[resource]
+script = ExtResource("1_2id75")
+nome = "Bola de Agua"
+aoe = "Diagonais"
+imagem_da_carta = ExtResource("1_dq8gu")
+descricao_efeito = "Causa 5 de dano de água em uma área na diagonal."
+metadata/_custom_type_script = "uid://7lqt15c7fviv"

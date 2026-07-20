@@ -46,6 +46,8 @@ func _ready() -> void:
 	destaqueInimigoMap.position = centro_monitor - deslocamentoVertical
 	fundoMap.position = centro_monitor - deslocamentoVertical
 	
+	Globals.gerar_baralho_teste()
+	
 	_inicializar_combate()
 
 func _input(event: InputEvent) -> void:
@@ -207,7 +209,7 @@ func executarAtaque(dano: int, aoe: String) -> void:
 			for pos in Globals.GRIDCRUZ:
 					posicaoInimigo = posicaoSelecionada + pos
 					tratarInimigo.emit(posicaoInimigo, dano)
-		"Diagonal":
+		"Diagonais":
 			for pos in Globals.GRIDDIAGONAL:
 					posicaoInimigo = posicaoSelecionada + pos
 					tratarInimigo.emit(posicaoInimigo, dano)

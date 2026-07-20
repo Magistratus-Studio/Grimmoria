@@ -55,9 +55,35 @@ var mp: int = MAXMANA
 
 var inimigos: Array[Node]
 
-var card1 = load("res://Assets/Cartas/bolaDeFogo.tres")
-var card2 = load("res://Assets/Cartas/bolaDeVeneno.tres")
-var baralho: Array[CardResource] = [card1, card1, card1, card1, card1, card1, card2, card2, card2, card2, card2]
+var card1x1 = load("res://Assets/Cartas/bolaDeFogo.tres")
+var card3x3 = load("res://Assets/Cartas/bolaDeVeneno.tres")
+var cardCruz = load("res://Assets/Cartas/bolaDeLava.tres")
+var cardDiagonais = load("res://Assets/Cartas/bolaDeAgua.tres")
+var baralho: Array[CardResource] = []
+
+func gerar_baralho_teste() -> void:
+	# 1. Agrupa as cartas disponíveis em uma lista de opções
+	var opcoes_de_cartas: Array[CardResource] = [card1x1, card3x3, cardCruz, cardDiagonais]
+	
+	# 2. Limpa o baralho atual por segurança (caso reinicie o combate)
+	baralho.clear()
+	
+	# 3. Faz um loop 12 vezes para preencher o baralho
+	for i in range(12):
+		# O método pick_random() escolhe um item aleatório da lista de opções
+		var carta_sorteada = opcoes_de_cartas.pick_random()
+		
+		# Adiciona a carta sorteada ao baralho oficial
+		baralho.append(carta_sorteada)
+		
+	# --- TESTE VISUAL NO CONSOLE ---
+	print("Baralho de teste gerado com: ", baralho.size(), " cartas!")
+	
+	# Lista o nome de todas as cartas geradas para você ver a aleatoriedade funcionando
+	var lista_nomes = "Ordem do baralho: "
+	for carta in baralho:
+		lista_nomes += carta.nome + ", "
+	print(lista_nomes)
 
 # --- SISTEMA DE ORIENTAÇÃO INTELIGENTE ---
 

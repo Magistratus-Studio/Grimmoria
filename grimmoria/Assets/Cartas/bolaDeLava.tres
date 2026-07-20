@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://x815v3hv7bop"]
+
+[ext_resource type="Script" uid="uid://7lqt15c7fviv" path="res://Assets/Cartas/cardResource.gd" id="1_n6p2o"]
+[ext_resource type="Texture2D" uid="uid://bf7p0ao1m1ijt" path="res://Sprites/combate/cartaTempCruz.png" id="1_ofrbd"]
+
+[resource]
+script = ExtResource("1_n6p2o")
+nome = "Bola de Lava"
+custo_ap = 3
+aoe = "Cruz"
+imagem_da_carta = ExtResource("1_ofrbd")
+descricao_efeito = "Causa 5 de dano de fogo em uma área em cruz."
+metadata/_custom_type_script = "uid://7lqt15c7fviv"
