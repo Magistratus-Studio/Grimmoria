@@ -57,7 +57,8 @@ func _input(event: InputEvent) -> void:
 
 func _inicializar_combate() -> void:
 	print("Combate Iniciado em Modo Paisagem!")
-	pilhaDeCompra = Globals.baralho
+	print("tam baralho: ", Globals.baralho.size())
+	pilhaDeCompra = Globals.baralho.duplicate_deep(Resource.DEEP_DUPLICATE_NONE)
 	pilhaDeCompra.shuffle()
 	maquinaEstados.init(self)
 
