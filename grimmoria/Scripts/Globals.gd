@@ -7,6 +7,19 @@ extends Node
 const CENTER: Vector2i = Vector2i(-1,0)
 const SPAWNPLAYER: Vector2i = Vector2i(-1,3)
 const SPAWNINIMIGO: Vector2i = Vector2i(-1,-3)
+const GRID3X3: Array[Vector2i] = [Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
+								  Vector2i(-1, 0), Vector2i(0, 0), Vector2i(1, 0),
+								  Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1)]
+const GRIDCRUZ: Array[Vector2i] = [Vector2i( 0,-2), Vector2i(0,-1), Vector2i(0,0),
+								   Vector2i(-1, 0), Vector2i(-2,0), Vector2i(0,1),
+								   Vector2i( 0, 2), Vector2i(1, 0), Vector2i(2,2)]
+const GRIDDIAGONAL: Array[Vector2i] = [Vector2i(-2,-2), Vector2i(-1,-1), Vector2i(0, 0),
+									   Vector2i(-1, 1), Vector2i(-2, 2), Vector2i(1, 1),
+									   Vector2i( 2, 2), Vector2i(1, -1), Vector2i(2,-2)]
+# REFATORAR PARA LINHA E CONE (deve afetar 9 quadrados ou menos)
+#const GRIDCONE: Array[Vector2i] = []
+#const GRIDLINHA: Array[Vector2i] = []
+
 
 # Constantes mago
 const MAXVIDA:             int = 100

@@ -93,6 +93,11 @@ material = ExtResource("7_t4v4m")
 tile_set = ExtResource("1_nyvbu")
 occlusion_enabled = false
 
+[node name="DestaqueLayerInimigo" type="TileMapLayer" parent="." unique_id=78436062]
+material = ExtResource("7_t4v4m")
+tile_set = ExtResource("1_nyvbu")
+occlusion_enabled = false
+
 [node name="TurnManager" type="Node" parent="." unique_id=1153103016 node_paths=PackedStringArray("estadoInicial")]
 script = ExtResource("7_skvce")
 estadoInicial = NodePath("TurnoMago")

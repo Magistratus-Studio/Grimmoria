@@ -12,7 +12,9 @@ signal tratarInimigo(posicaoSelecionada: Vector2i, dano: int, aoe: String)
 
 @onready var gameMap: TileMapLayer = $GameLayer
 @onready var destaqueMap: TileMapLayer = $DestaqueLayer
+@onready var destaqueInimigoMap: TileMapLayer = $DestaqueLayerInimigo
 @onready var fundoMap: TileMapLayer = $FundoLayer
+
 # Referências dos nós do Modal
 @onready var modal_descricao: PanelContainer = $CanvasLayer/ModalDescricao
 @onready var modal_nome: Label = $CanvasLayer/ModalDescricao/VBoxContainer/TextoNome
@@ -41,6 +43,7 @@ func _ready() -> void:
 	var deslocamentoVertical = Vector2i(0, int(centro_monitor[1] * 0.3))
 	gameMap.position = centro_monitor - deslocamentoVertical
 	destaqueMap.position = centro_monitor - deslocamentoVertical
+	destaqueInimigoMap.position = centro_monitor - deslocamentoVertical
 	fundoMap.position = centro_monitor - deslocamentoVertical
 	
 	_inicializar_combate()
@@ -57,7 +60,6 @@ func _input(event: InputEvent) -> void:
 
 func _inicializar_combate() -> void:
 	print("Combate Iniciado em Modo Paisagem!")
-	print("tam baralho: ", Globals.baralho.size())
 	pilhaDeCompra = Globals.baralho.duplicate_deep(Resource.DEEP_DUPLICATE_NONE)
 	pilhaDeCompra.shuffle()
 	maquinaEstados.init(self)
@@ -127,6 +129,12 @@ func _on_carta_selecionada(dados_da_carta: CardResource, no_da_carta: TextureBut
 	# Aplica a posição calculada
 	modal_descricao.global_position = nova_posicao_modal
 	modal_descricao.visible = true
+	if Globals.mp >= carta_selecionada_dados.custo_ap:
+		$CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar.text = "Usar Carta" 
+		$CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		$CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar.text = "Mana Insuficiente" 
+		$CanvasLayer/ModalDescricao/VBoxContainer/HBoxContainer/BotaoJogar.process_mode = Node.PROCESS_MODE_DISABLED
 
 func fecharModal() -> void:
 	modal_descricao.visible = false
@@ -147,6 +155,8 @@ func _on_botao_jogar_modal_pressed() -> void:
 		mao_jogador.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		if Globals.mp >= carta_selecionada_dados.custo_ap:
+			# Fazer depois a verficação com base se o feitiço é no inimigo ou no campo
+			# no momoento está apenas no inimigo
 			print("Executando o efeito da carta: ", carta_selecionada_dados.nome)
 			cartaUsada.emit(carta_selecionada_dados.custo_ap)
 			match carta_selecionada_dados.tipo:
@@ -181,10 +191,26 @@ func executarAtaque(dano: int, aoe: String) -> void:
 	print("Magia de ataque")
 	podeAtacar = true
 	var posicaoSelecionada = await inimigoSelecionado
+	var posicaoInimigo: Vector2i
 	botaoTurno.process_mode = Node.PROCESS_MODE_INHERIT
 	mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT
+	print("Dano Causado: ", dano, " em ", aoe, " na posição ", posicaoSelecionada)
 	limparDestaqueInimigos.emit()
-	tratarInimigo.emit(posicaoSelecionada, dano, aoe)
+	match aoe:
+		"1x1":
+			tratarInimigo.emit(posicaoSelecionada, dano)
+		"3x3":
+			for pos in Globals.GRID3X3:
+					posicaoInimigo = posicaoSelecionada + pos
+					tratarInimigo.emit(posicaoInimigo, dano)
+		"Cruz":
+			for pos in Globals.GRIDCRUZ:
+					posicaoInimigo = posicaoSelecionada + pos
+					tratarInimigo.emit(posicaoInimigo, dano)
+		"Diagonal":
+			for pos in Globals.GRIDDIAGONAL:
+					posicaoInimigo = posicaoSelecionada + pos
+					tratarInimigo.emit(posicaoInimigo, dano)
 
 func _on_turno_mago_habilitar_carta() -> void:
 	mao_jogador.process_mode = Node.PROCESS_MODE_INHERIT

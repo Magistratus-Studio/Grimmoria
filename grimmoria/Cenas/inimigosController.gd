@@ -2,7 +2,7 @@ extends Node2D
 
 signal finalizarCombate(condicao: bool)
 
-@onready var destaqueLayer: TileMapLayer = $"../../../DestaqueLayer"
+@onready var DestaqueLayerInimigo: TileMapLayer = $"../../../DestaqueLayerInimigo"
 
 func _ready() -> void:
 	# trocar para ele utilizar os inimigos salvos dentro do global
@@ -25,27 +25,38 @@ func _on_entidades_posicionar_inimigos(tileMap) -> void:
 func _on_combate_destacar_inimigos(aoe: String) -> void:
 	var posicao: Vector2i
 	for inimigo in Globals.inimigos:
-		posicao = destaqueLayer.local_to_map(inimigo.position)
-		destaqueLayer.set_cell(posicao, 0, Vector2i(0,0))
+		match aoe:
+			"1x1":
+				posicao = DestaqueLayerInimigo.local_to_map(inimigo.position)
+				DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
+			"3x3":
+				for pos in Globals.GRID3X3:
+					posicao = DestaqueLayerInimigo.local_to_map(inimigo.position) + pos
+					posicao.x = clampi(posicao.x, -3, 1)
+					posicao.y = clampi(posicao.y, -3, 3)
+					DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
+			"Cruz":
+				for pos in Globals.GRIDCRUZ:
+					posicao = DestaqueLayerInimigo.local_to_map(inimigo.position) + pos
+					posicao.x = clampi(posicao.x, -3, 1)
+					posicao.y = clampi(posicao.y, -3, 3)
+					DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
+			"Diagonal":
+				for pos in Globals.GRIDDIAGONAL:
+					posicao = DestaqueLayerInimigo.local_to_map(inimigo.position) + pos
+					posicao.x = clampi(posicao.x, -3, 1)
+					posicao.y = clampi(posicao.y, -3, 3)
+					DestaqueLayerInimigo.set_cell(posicao, 0, Vector2i(0,0))
 
 
 func _on_combate_limpar_destaque_inimigos() -> void:
-	var posicao
-	for inimigo in Globals.inimigos:
-		posicao = destaqueLayer.local_to_map(inimigo.position)
-		destaqueLayer.set_cell(posicao, -1, Vector2i(-1,-1))
+	DestaqueLayerInimigo.clear()
 
 
-func _on_combate_tratar_inimigo(posicaoSelecionada: Vector2i, dano: int, aoe: String) -> void:
-	print("Dano Causado: ", dano, " em ", aoe, " na posição ", posicaoSelecionada)
+func _on_combate_tratar_inimigo(posicaoSelecionada: Vector2i, dano: int) -> void:
 	var posicao
 	for inimigo in Globals.inimigos:
-		posicao = destaqueLayer.local_to_map(inimigo.position)
+		posicao = DestaqueLayerInimigo.local_to_map(inimigo.position)
 		if posicao == posicaoSelecionada:
-			match aoe:
-				"1x1":
-					inimigo.queue_free()
-					Globals.inimigos.pop_at(Globals.inimigos.find(inimigo))
-				"3x3":
-					inimigo.queue_free()
-					Globals.inimigos.pop_at(Globals.inimigos.find(inimigo))
+			inimigo.queue_free()
+			Globals.inimigos.pop_at(Globals.inimigos.find(inimigo))
