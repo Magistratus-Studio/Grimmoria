@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://rbs7il48pjcw" path="res://Scripts/Leitura/LeituraController.gd" id="1_k0l4t"]
 [ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/Temas/TextosTitulos.tres" id="2_p731m"]
 [ext_resource type="LabelSettings" uid="uid://den2nh8on85ia" path="res://Assets/Temas/TextosSubTitulos.tres" id="3_2sp2x"]
-[ext_resource type="Texture2D" uid="uid://dpjt4dgs4j83g" path="res://Sprites/leitura/Roda emocoes.svg" id="3_juawc"]
 [ext_resource type="Texture2D" uid="uid://dlpatj4xqps4u" path="res://Sprites/leitura/ponteiro.png" id="4_axn8k"]
 [ext_resource type="Script" uid="uid://bww73ldvwk1au" path="res://Scripts/Leitura/rodaControl.gd" id="4_juawc"]
 [ext_resource type="Theme" uid="uid://d03yn3gw74lfm" path="res://Assets/Temas/tema_botao_claro.tres" id="4_wg5h8"]
+[ext_resource type="Texture2D" uid="uid://djjaf4l7bt1of" path="res://Sprites/leitura/Roda emocoes.png" id="7_2sp2x"]
 
 [node name="Leitura" type="Control" unique_id=186053274]
 layout_mode = 3
@@ -25,13 +25,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=861198686]
+[node name="FundoTopo" type="ColorRect" parent="." unique_id=861198686]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
+anchor_bottom = 0.34921876
 grow_horizontal = 2
 color = Color(0.11372549, 0.105882354, 0.1254902, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="PlacehoderMago" type="ColorRect" parent="." unique_id=1219496570]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.23400001
+anchor_right = 0.91700006
+anchor_bottom = 0.851
+offset_left = 0.23999786
+offset_top = 0.47998047
+offset_right = -0.24005127
+offset_bottom = 10.719971
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6288588, 0.62885886, 0.6288588, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="LeituraText" type="Label" parent="." unique_id=1084802318]
@@ -51,8 +68,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TimerLeitura" type="Timer" parent="." unique_id=724581090]
-
 [node name="TimerText" type="Label" parent="." unique_id=1636924625]
 layout_mode = 1
 anchors_preset = -1
@@ -60,18 +75,19 @@ anchor_top = 0.123
 anchor_right = 0.99994457
 anchor_bottom = 0.18800001
 offset_top = 0.55999756
-offset_right = 0.03994751
-offset_bottom = 0.35998535
+offset_right = 0.039916992
+offset_bottom = 1.3599854
 text = "00:00"
 label_settings = ExtResource("3_2sp2x")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="TimerLeitura" type="Timer" parent="." unique_id=724581090]
+
 [node name="RodaControl" type="Control" parent="." unique_id=1700400184]
-visible = false
 layout_mode = 1
-anchor_top = 0.71171874
+anchor_top = 0.653125
 anchor_right = 1.0001667
 anchor_bottom = 0.9998438
 offset_right = -0.11999512
@@ -79,21 +95,29 @@ offset_bottom = 0.19995117
 script = ExtResource("4_juawc")
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonStartLeitura" type="Button" parent="." unique_id=1157710200]
+[node name="Ponteiro" type="Sprite2D" parent="." unique_id=212909956]
+visible = false
+position = Vector2(358, 933)
+rotation = 3.1415925
+texture = ExtResource("4_axn8k")
+
+[node name="ButtonPararLeitura" type="Button" parent="." unique_id=1157710200]
+custom_minimum_size = Vector2(151, 53)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.83500004
-anchor_right = 0.82500005
-anchor_bottom = 0.90900004
-offset_top = 0.19995117
-offset_right = -6.1035156e-05
-offset_bottom = 0.47998047
+anchor_left = 0.50069445
+anchor_top = 0.8613281
+anchor_right = 0.50069445
+anchor_bottom = 0.8613281
+offset_left = -75.5
+offset_top = -26.5
+offset_right = 75.5
+offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_wg5h8")
 theme_type_variation = &"BotaoAcao"
-text = "Iniciar Leitura"
+text = "Parar a Leitura"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonVoltar" type="Button" parent="." unique_id=1687257565]
@@ -112,18 +136,23 @@ grow_vertical = 2
 theme = ExtResource("4_wg5h8")
 metadata/_edit_use_anchors_ = true
 
-[node name="Roda" type="Sprite2D" parent="." unique_id=555963424]
-visible = false
-position = Vector2(358, 1331.055)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_juawc")
-
-[node name="Ponteiro" type="Sprite2D" parent="." unique_id=212909956]
-visible = false
-position = Vector2(358, 933)
-rotation = 3.1415925
-texture = ExtResource("4_axn8k")
+[node name="Roda" type="TextureRect" parent="." unique_id=742459039]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_top = 1.067
+anchor_right = 0.50100005
+anchor_bottom = 1.067
+offset_left = -618.72003
+offset_top = -637.76
+offset_right = 618.27997
+offset_bottom = 638.24
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("7_2sp2x")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="TimerLeitura" to="." method="_on_timer_leitura_timeout"]
-[connection signal="pressed" from="ButtonStartLeitura" to="." method="_on_button_start_leitura_pressed"]
+[connection signal="pressed" from="ButtonPararLeitura" to="." method="_on_button_start_leitura_pressed"]
 [connection signal="pressed" from="ButtonVoltar" to="." method="_on_button_voltar_pressed"]
