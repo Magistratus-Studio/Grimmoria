@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://den2nh8on85ia"]
+
+[ext_resource type="FontFile" uid="uid://ck7osakonvh4j" path="res://Assets/fonts/Grenze/static/Grenze-Regular.ttf" id="1_45uuu"]
+
+[resource]
+font = ExtResource("1_45uuu")
+font_size = 56

@@ -1,0 +1,39 @@
+[gd_resource type="Theme" format=3 uid="uid://c4txny7yawxg5"]
+
+[ext_resource type="FontFile" uid="uid://msgwameqewfs" path="res://Assets/fonts/Alegreya/static/Alegreya-Regular.ttf" id="1_jb8tg"]
+[ext_resource type="StyleBox" uid="uid://dsgivej7y4cmo" path="res://Assets/Temas/styleBoxClaro.tres" id="2_8mvu1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj4uk"]
+bg_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4627451, 0.4627451, 0.4627451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pydd"]
+bg_color = Color(0.7058824, 0.7058824, 0.7058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4627451, 0.4627451, 0.4627451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+Button/colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+Button/colors/font_focus_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+Button/colors/font_hover_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+Button/colors/font_hover_pressed_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+Button/colors/font_pressed_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+Button/fonts/font = ExtResource("1_jb8tg")
+Button/styles/hover = SubResource("StyleBoxFlat_vj4uk")
+Button/styles/normal = ExtResource("2_8mvu1")
+Button/styles/pressed = SubResource("StyleBoxFlat_4pydd")

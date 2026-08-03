@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://cv3oap5cyqrtu"]
 
 [ext_resource type="Script" uid="uid://rbs7il48pjcw" path="res://Scripts/Leitura/LeituraController.gd" id="1_k0l4t"]
-[ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/TextosMenus.tres" id="2_p731m"]
+[ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/Temas/TextosTitulos.tres" id="2_p731m"]
+[ext_resource type="LabelSettings" uid="uid://den2nh8on85ia" path="res://Assets/Temas/TextosSubTitulos.tres" id="3_2sp2x"]
 [ext_resource type="Texture2D" uid="uid://dpjt4dgs4j83g" path="res://Sprites/leitura/Roda emocoes.svg" id="3_juawc"]
 [ext_resource type="Texture2D" uid="uid://dlpatj4xqps4u" path="res://Sprites/leitura/ponteiro.png" id="4_axn8k"]
 [ext_resource type="Script" uid="uid://bww73ldvwk1au" path="res://Scripts/Leitura/rodaControl.gd" id="4_juawc"]
+[ext_resource type="Theme" uid="uid://d03yn3gw74lfm" path="res://Assets/Temas/tema_botao_claro.tres" id="4_wg5h8"]
 
 [node name="Leitura" type="Control" unique_id=186053274]
 layout_mode = 3
@@ -23,19 +25,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=861198686]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.11372549, 0.105882354, 0.1254902, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="LeituraText" type="Label" parent="." unique_id=1084802318]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.13861111
-anchor_top = 0.039
-anchor_right = 0.8476111
-anchor_bottom = 0.103999995
+anchor_left = -0.00027777354
+anchor_top = 0.067125
+anchor_right = 1.000389
+anchor_bottom = 0.13212499
 offset_left = 0.19999695
 offset_top = 0.07999802
 offset_right = -0.2800293
 offset_bottom = -0.11999512
 text = "Tempo de Leitura"
 label_settings = ExtResource("2_p731m")
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TimerLeitura" type="Timer" parent="." unique_id=724581090]
@@ -43,18 +56,20 @@ metadata/_edit_use_anchors_ = true
 [node name="TimerText" type="Label" parent="." unique_id=1636924625]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.379
 anchor_top = 0.123
-anchor_right = 0.59300005
+anchor_right = 0.99994457
 anchor_bottom = 0.18800001
-offset_left = 0.11999512
 offset_top = 0.55999756
 offset_right = 0.03994751
 offset_bottom = 0.35998535
 text = "00:00"
-label_settings = ExtResource("2_p731m")
+label_settings = ExtResource("3_2sp2x")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RodaControl" type="Control" parent="." unique_id=1700400184]
+visible = false
 layout_mode = 1
 anchor_top = 0.71171874
 anchor_right = 1.0001667
@@ -64,102 +79,51 @@ offset_bottom = 0.19995117
 script = ExtResource("4_juawc")
 metadata/_edit_use_anchors_ = true
 
-[node name="ControlStartLeitura" type="Control" parent="." unique_id=485950089]
-layout_mode = 1
-anchor_left = 0.2
-anchor_top = 0.83553123
-anchor_right = 0.8073889
-anchor_bottom = 0.9016876
-offset_top = -0.480011
-offset_right = -0.32000732
-offset_bottom = -0.16003418
-metadata/_edit_use_anchors_ = true
-
-[node name="Fundo" type="ColorRect" parent="ControlStartLeitura" unique_id=1467326752]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9490196, 0.64705884, 0.38039216, 1)
-
-[node name="ButtonStartLeitura" type="Button" parent="ControlStartLeitura" unique_id=1157710200]
+[node name="ButtonStartLeitura" type="Button" parent="." unique_id=1157710200]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.2
+anchor_top = 0.83500004
+anchor_right = 0.82500005
+anchor_bottom = 0.90900004
+offset_top = 0.19995117
+offset_right = -6.1035156e-05
+offset_bottom = 0.47998047
 grow_horizontal = 2
 grow_vertical = 2
-flat = true
+theme = ExtResource("4_wg5h8")
+theme_type_variation = &"BotaoAcao"
+text = "Iniciar Leitura"
 metadata/_edit_use_anchors_ = true
 
-[node name="LabelButton" type="Label" parent="ControlStartLeitura" unique_id=744531297]
+[node name="ButtonVoltar" type="Button" parent="." unique_id=1687257565]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -41.5
-offset_right = 72.0
-offset_bottom = 41.5
+offset_left = -6.119995
+offset_top = -4.0
+offset_right = 6.119995
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Iniciar Leitura"
-label_settings = ExtResource("2_p731m")
-
-[node name="ControlVoltar" type="Control" parent="." unique_id=2087897805]
-layout_mode = 1
-anchor_left = 0.18333334
-anchor_top = 0.62459373
-anchor_right = 0.83100003
-anchor_bottom = 0.6907501
-offset_top = -0.47998047
-offset_right = -0.32000732
-offset_bottom = -0.16003418
+theme = ExtResource("4_wg5h8")
 metadata/_edit_use_anchors_ = true
-
-[node name="Fundo" type="ColorRect" parent="ControlVoltar" unique_id=1246189717]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9490196, 0.64705884, 0.38039216, 1)
-
-[node name="ButtonVoltar" type="Button" parent="ControlVoltar" unique_id=1687257565]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelButton" type="Label" parent="ControlVoltar" unique_id=142084366]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Encerrar Sessão"
-label_settings = ExtResource("2_p731m")
 
 [node name="Roda" type="Sprite2D" parent="." unique_id=555963424]
+visible = false
 position = Vector2(358, 1331.055)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_juawc")
 
 [node name="Ponteiro" type="Sprite2D" parent="." unique_id=212909956]
+visible = false
 position = Vector2(358, 933)
 rotation = 3.1415925
 texture = ExtResource("4_axn8k")
 
 [connection signal="timeout" from="TimerLeitura" to="." method="_on_timer_leitura_timeout"]
-[connection signal="pressed" from="ControlStartLeitura/ButtonStartLeitura" to="." method="_on_button_start_leitura_pressed"]
-[connection signal="pressed" from="ControlVoltar/ButtonVoltar" to="." method="_on_button_voltar_pressed"]
+[connection signal="pressed" from="ButtonStartLeitura" to="." method="_on_button_start_leitura_pressed"]
+[connection signal="pressed" from="ButtonVoltar" to="." method="_on_button_voltar_pressed"]

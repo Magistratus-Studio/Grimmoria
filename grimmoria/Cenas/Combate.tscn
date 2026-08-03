@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://d1av48kgh3js8" path="res://Assets/MaquinaEstados/turnoMago.gd" id="8_8eml1"]
 [ext_resource type="Script" uid="uid://dx7p8gfeq1852" path="res://Assets/MaquinaEstados/turnoInimigo.gd" id="9_c6din"]
 [ext_resource type="Script" uid="uid://dg1c6voeuauhj" path="res://Assets/MaquinaEstados/turnoFinalizar.gd" id="10_hag46"]
-[ext_resource type="LabelSettings" uid="uid://cmd057lsx5dsu" path="res://Assets/TextosBotoes.tres" id="15_c7etf"]
+[ext_resource type="LabelSettings" uid="uid://cmd057lsx5dsu" path="res://Assets/Temas/TextosBotoes.tres" id="15_c7etf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8vnd"]
 atlas = ExtResource("4_w8p0a")
