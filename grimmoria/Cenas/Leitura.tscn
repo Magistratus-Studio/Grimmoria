@@ -1,12 +1,74 @@
 [gd_scene format=3 uid="uid://cv3oap5cyqrtu"]
 
 [ext_resource type="Script" uid="uid://rbs7il48pjcw" path="res://Scripts/Leitura/LeituraController.gd" id="1_k0l4t"]
-[ext_resource type="LabelSettings" uid="uid://bgxy2t05bs3b" path="res://Assets/Temas/TextosTitulos.tres" id="2_p731m"]
-[ext_resource type="LabelSettings" uid="uid://den2nh8on85ia" path="res://Assets/Temas/TextosSubTitulos.tres" id="3_2sp2x"]
-[ext_resource type="Texture2D" uid="uid://dlpatj4xqps4u" path="res://Sprites/leitura/ponteiro.png" id="4_axn8k"]
+[ext_resource type="FontFile" uid="uid://c4pxhcjb6owws" path="res://Assets/fonts/Grenze/static/Grenze-Medium.ttf" id="2_hklsg"]
 [ext_resource type="Script" uid="uid://bww73ldvwk1au" path="res://Scripts/Leitura/rodaControl.gd" id="4_juawc"]
 [ext_resource type="Theme" uid="uid://d03yn3gw74lfm" path="res://Assets/Temas/tema_botao_claro.tres" id="4_wg5h8"]
+[ext_resource type="Texture2D" uid="uid://cxa8ym1kcj7cw" path="res://Sprites/leitura/seletor_seta.png" id="5_xqhst"]
+[ext_resource type="FontFile" uid="uid://ck7osakonvh4j" path="res://Assets/fonts/Grenze/static/Grenze-Regular.ttf" id="6_ngso7"]
 [ext_resource type="Texture2D" uid="uid://djjaf4l7bt1of" path="res://Sprites/leitura/Roda emocoes.png" id="7_2sp2x"]
+[ext_resource type="StyleBox" uid="uid://yyk7dvi4ldco" path="res://Assets/Temas/styleFundoDialogo.tres" id="8_csvhh"]
+[ext_resource type="FontFile" uid="uid://msgwameqewfs" path="res://Assets/fonts/Alegreya/static/Alegreya-Regular.ttf" id="9_0aumo"]
+[ext_resource type="Theme" uid="uid://c4txny7yawxg5" path="res://Assets/Temas/tema_botao_escuro.tres" id="10_1eebv"]
+[ext_resource type="StyleBox" uid="uid://clsos0jcu8hlx" path="res://Assets/Temas/styleCaixaDialogoBorda.tres" id="11_qrsky"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0aumo"]
+font = ExtResource("2_hklsg")
+font_size = 72
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1eebv"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrsky"]
+font = ExtResource("2_hklsg")
+font_size = 72
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsh6m"]
+font = ExtResource("6_ngso7")
+font_size = 56
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4y4p6"]
+font = ExtResource("6_ngso7")
+font_size = 56
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cslh6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5019608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ci0vr"]
+font = ExtResource("6_ngso7")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xon4k"]
+font = ExtResource("9_0aumo")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtymk"]
+font = ExtResource("2_hklsg")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4sog"]
+font = ExtResource("2_hklsg")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_s76xx"]
+LineEdit/colors/font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+LineEdit/fonts/font = ExtResource("9_0aumo")
+LineEdit/styles/normal = ExtResource("8_csvhh")
+SpinBox/constants/field_and_buttons_separation = 8
 
 [node name="Leitura" type="Control" unique_id=186053274]
 layout_mode = 3
@@ -35,22 +97,6 @@ grow_horizontal = 2
 color = Color(0.11372549, 0.105882354, 0.1254902, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="PlacehoderMago" type="ColorRect" parent="." unique_id=1219496570]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.083000004
-anchor_top = 0.23400001
-anchor_right = 0.91700006
-anchor_bottom = 0.851
-offset_left = 0.23999786
-offset_top = 0.47998047
-offset_right = -0.24005127
-offset_bottom = 10.719971
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.6288588, 0.62885886, 0.6288588, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="LeituraText" type="Label" parent="." unique_id=1084802318]
 layout_mode = 1
 anchors_preset = -1
@@ -63,80 +109,24 @@ offset_top = 0.07999802
 offset_right = -0.2800293
 offset_bottom = -0.11999512
 text = "Tempo de Leitura"
-label_settings = ExtResource("2_p731m")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TimerText" type="Label" parent="." unique_id=1636924625]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.123
-anchor_right = 0.99994457
-anchor_bottom = 0.18800001
-offset_top = 0.55999756
-offset_right = 0.039916992
-offset_bottom = 1.3599854
-text = "00:00"
-label_settings = ExtResource("3_2sp2x")
+label_settings = SubResource("LabelSettings_0aumo")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TimerLeitura" type="Timer" parent="." unique_id=724581090]
 
-[node name="RodaControl" type="Control" parent="." unique_id=1700400184]
-layout_mode = 1
-anchor_top = 0.653125
-anchor_right = 1.0001667
-anchor_bottom = 0.9998438
-offset_right = -0.11999512
-offset_bottom = 0.19995117
-script = ExtResource("4_juawc")
-metadata/_edit_use_anchors_ = true
-
-[node name="Ponteiro" type="Sprite2D" parent="." unique_id=212909956]
+[node name="EmocaoContainer" type="Control" parent="." unique_id=594816267]
 visible = false
-position = Vector2(358, 933)
-rotation = 3.1415925
-texture = ExtResource("4_axn8k")
-
-[node name="ButtonPararLeitura" type="Button" parent="." unique_id=1157710200]
-custom_minimum_size = Vector2(151, 53)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.50069445
-anchor_top = 0.8613281
-anchor_right = 0.50069445
-anchor_bottom = 0.8613281
-offset_left = -75.5
-offset_top = -26.5
-offset_right = 75.5
-offset_bottom = 26.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_wg5h8")
-theme_type_variation = &"BotaoAcao"
-text = "Parar a Leitura"
-metadata/_edit_use_anchors_ = true
+script = ExtResource("4_juawc")
 
-[node name="ButtonVoltar" type="Button" parent="." unique_id=1687257565]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.119995
-offset_top = -4.0
-offset_right = 6.119995
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_wg5h8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Roda" type="TextureRect" parent="." unique_id=742459039]
+[node name="Roda" type="TextureRect" parent="EmocaoContainer" unique_id=742459039]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.50100005
@@ -153,6 +143,323 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_2sp2x")
 metadata/_edit_use_anchors_ = true
 
+[node name="SetaSeletor" type="TextureRect" parent="EmocaoContainer" unique_id=631219890]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50069445
+anchor_top = 0.7289063
+anchor_right = 0.50069445
+anchor_bottom = 0.7289063
+offset_left = -23.5
+offset_top = -63.0
+offset_right = 23.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0)
+texture = ExtResource("5_xqhst")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="EmocaoContainer" unique_id=50041914]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29200003
+anchor_top = 0.555
+anchor_right = 0.708
+anchor_bottom = 0.711
+offset_left = -0.24002075
+offset_top = -0.4000244
+offset_right = 0.23999023
+offset_bottom = -0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1eebv")
+metadata/_edit_use_anchors_ = true
+
+[node name="Tooltip" type="VBoxContainer" parent="EmocaoContainer/Panel" unique_id=555336682]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titulo" type="Label" parent="EmocaoContainer/Panel/Tooltip" unique_id=2095540239]
+layout_mode = 2
+text = "Emoção"
+label_settings = SubResource("LabelSettings_qrsky")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LabelEmocao" type="Label" parent="EmocaoContainer/Panel/Tooltip" unique_id=1681876214]
+layout_mode = 2
+text = "Alegria"
+label_settings = SubResource("LabelSettings_xsh6m")
+horizontal_alignment = 1
+
+[node name="ButtonSelecionarEmocao" type="Button" parent="EmocaoContainer" unique_id=1687257565]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50069445
+anchor_top = 0.8960937
+anchor_right = 0.50069445
+anchor_bottom = 0.8960937
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("4_wg5h8")
+text = "Selecionar"
+metadata/_edit_use_anchors_ = true
+
+[node name="LeituraContainer" type="Control" parent="." unique_id=2123443307]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlacehoderMago" type="ColorRect" parent="LeituraContainer" unique_id=1219496570]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.23400001
+anchor_right = 0.91700006
+anchor_bottom = 0.851
+offset_left = 0.23999786
+offset_top = 0.47998047
+offset_right = -0.24005127
+offset_bottom = 10.719971
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6288588, 0.62885886, 0.6288588, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TimerText" type="Label" parent="LeituraContainer" unique_id=1636924625]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.123
+anchor_right = 0.99994457
+anchor_bottom = 0.18800001
+offset_top = 0.55999756
+offset_right = 0.039916992
+offset_bottom = 1.3599854
+text = "00:00"
+label_settings = SubResource("LabelSettings_4y4p6")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonPararLeitura" type="Button" parent="LeituraContainer" unique_id=1157710200]
+custom_minimum_size = Vector2(151, 53)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.86
+anchor_right = 0.5
+anchor_bottom = 0.86
+offset_left = -150.0
+offset_top = -39.80005
+offset_right = 150.0
+offset_bottom = 40.19995
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("4_wg5h8")
+theme_type_variation = &"BotaoAcao"
+text = "Parar a Leitura"
+metadata/_edit_use_anchors_ = true
+
+[node name="CaixaDialogo" type="Panel" parent="." unique_id=854965313]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cslh6")
+
+[node name="FundoDialogo" type="Panel" parent="CaixaDialogo" unique_id=37078106]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = ExtResource("8_csvhh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CaixaDialogo/FundoDialogo" unique_id=1450382935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Titulo" type="Label" parent="CaixaDialogo/FundoDialogo/VBoxContainer" unique_id=810945558]
+layout_mode = 2
+text = "Confirmar Emoção"
+label_settings = SubResource("LabelSettings_ci0vr")
+horizontal_alignment = 1
+
+[node name="Corpo" type="Label" parent="CaixaDialogo/FundoDialogo/VBoxContainer" unique_id=1369411904]
+custom_minimum_size = Vector2(350, 141)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Não é possível mudar a emoção após a confirmação. Deseja prosseguir?"
+label_settings = SubResource("LabelSettings_xon4k")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CaixaDialogo/FundoDialogo/VBoxContainer" unique_id=758979990]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Nao" type="Button" parent="CaixaDialogo/FundoDialogo/VBoxContainer/HBoxContainer" unique_id=922765556]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme = ExtResource("4_wg5h8")
+text = "Não"
+
+[node name="Sim" type="Button" parent="CaixaDialogo/FundoDialogo/VBoxContainer/HBoxContainer" unique_id=246783782]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme = ExtResource("10_1eebv")
+text = "Sim"
+
+[node name="FinalizarContainer" type="Control" parent="." unique_id=2036183674]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonFinalizar" type="Button" parent="FinalizarContainer" unique_id=1849935506]
+custom_minimum_size = Vector2(151, 53)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.86
+anchor_right = 0.508
+anchor_bottom = 0.86
+offset_left = -149.76001
+offset_top = -39.80005
+offset_right = 150.23999
+offset_bottom = 40.19995
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("4_wg5h8")
+theme_type_variation = &"BotaoAcao"
+text = "Finalizar"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="FinalizarContainer" unique_id=1759309843]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.43100002
+anchor_right = 0.91700006
+anchor_bottom = 0.80700004
+offset_left = -3.7600021
+offset_top = 4.3199463
+offset_right = 3.7599487
+offset_bottom = 3.039917
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = ExtResource("11_qrsky")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinalizarContainer/Panel" unique_id=1205177908]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FinalizarContainer/Panel/VBoxContainer" unique_id=2015929419]
+layout_mode = 2
+text = "Resultado do Treino"
+label_settings = SubResource("LabelSettings_vtymk")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FinalizarContainer/Panel/VBoxContainer" unique_id=1222117126]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinalizarContainer/Panel/VBoxContainer/ScrollContainer" unique_id=1205405590]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Panel" type="Panel" parent="FinalizarContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1925576839]
+custom_minimum_size = Vector2(560, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("11_qrsky")
+
+[node name="Panel2" type="Panel" parent="FinalizarContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1485964552]
+custom_minimum_size = Vector2(560, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("11_qrsky")
+
+[node name="Panel3" type="Panel" parent="FinalizarContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=356084233]
+custom_minimum_size = Vector2(560, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("11_qrsky")
+
+[node name="Panel4" type="Panel" parent="FinalizarContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=812354206]
+custom_minimum_size = Vector2(560, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("11_qrsky")
+
+[node name="Panel5" type="Panel" parent="FinalizarContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=863716888]
+custom_minimum_size = Vector2(560, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("11_qrsky")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FinalizarContainer/Panel/VBoxContainer" unique_id=1982564561]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="FinalizarContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1062062694]
+layout_mode = 2
+text = "Numero de Páginas Lidas: "
+label_settings = SubResource("LabelSettings_v4sog")
+
+[node name="SpinBox" type="SpinBox" parent="FinalizarContainer/Panel/VBoxContainer/HBoxContainer" unique_id=2145918986]
+layout_mode = 2
+theme = SubResource("Theme_s76xx")
+max_value = 10000.0
+alignment = 1
+
 [connection signal="timeout" from="TimerLeitura" to="." method="_on_timer_leitura_timeout"]
-[connection signal="pressed" from="ButtonPararLeitura" to="." method="_on_button_start_leitura_pressed"]
-[connection signal="pressed" from="ButtonVoltar" to="." method="_on_button_voltar_pressed"]
+[connection signal="pressed" from="EmocaoContainer/ButtonSelecionarEmocao" to="." method="_on_button_voltar_pressed"]
+[connection signal="pressed" from="LeituraContainer/ButtonPararLeitura" to="." method="_on_button_start_leitura_pressed"]
+[connection signal="pressed" from="FinalizarContainer/ButtonFinalizar" to="." method="_on_button_start_leitura_pressed"]

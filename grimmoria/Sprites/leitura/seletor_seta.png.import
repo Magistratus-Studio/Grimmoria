@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlpatj4xqps4u"
-path="res://.godot/imported/ponteiro.png-3feddea655319fae41f8f4c53f1bcf20.ctex"
+uid="uid://cxa8ym1kcj7cw"
+path="res://.godot/imported/seletor_seta.png-449c13d8805ee69f12a3adeb51c11801.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/leitura/ponteiro.png"
-dest_files=["res://.godot/imported/ponteiro.png-3feddea655319fae41f8f4c53f1bcf20.ctex"]
+source_file="res://Sprites/leitura/seletor_seta.png"
+dest_files=["res://.godot/imported/seletor_seta.png-449c13d8805ee69f12a3adeb51c11801.ctex"]
 
 [params]
 

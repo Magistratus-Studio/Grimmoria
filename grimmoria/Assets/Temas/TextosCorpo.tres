@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bblq23yqxt13o"]
+
+[ext_resource type="FontFile" uid="uid://msgwameqewfs" path="res://Assets/fonts/Alegreya/static/Alegreya-Regular.ttf" id="1_l4q23"]
+
+[resource]
+font = ExtResource("1_l4q23")
+font_size = 32
+font_color = Color(0, 0, 0, 1)

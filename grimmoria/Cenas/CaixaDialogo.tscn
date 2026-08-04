@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cco0yen3rv1iw"]
+
+[ext_resource type="StyleBox" uid="uid://yyk7dvi4ldco" path="res://Assets/Temas/styleFundoDialogo.tres" id="1_36gq3"]
+[ext_resource type="LabelSettings" uid="uid://den2nh8on85ia" path="res://Assets/Temas/TextosSubTitulos.tres" id="2_vd6f8"]
+[ext_resource type="LabelSettings" uid="uid://bblq23yqxt13o" path="res://Assets/Temas/TextosCorpo.tres" id="3_tyk7n"]
+[ext_resource type="Theme" uid="uid://d03yn3gw74lfm" path="res://Assets/Temas/tema_botao_claro.tres" id="4_ebhud"]
+[ext_resource type="Theme" uid="uid://c4txny7yawxg5" path="res://Assets/Temas/tema_botao_escuro.tres" id="5_7f3xg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cslh6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5019608)
+
+[node name="CaixaDialogo" type="Panel" unique_id=854965313]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cslh6")
+
+[node name="FundoDialogo" type="Panel" parent="." unique_id=37078106]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = ExtResource("1_36gq3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FundoDialogo" unique_id=1450382935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titulo" type="Label" parent="FundoDialogo/VBoxContainer" unique_id=810945558]
+layout_mode = 2
+text = "Titulo"
+label_settings = ExtResource("2_vd6f8")
+horizontal_alignment = 1
+
+[node name="Corpo" type="Label" parent="FundoDialogo/VBoxContainer" unique_id=1369411904]
+custom_minimum_size = Vector2(350, 141)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Texto Corpo"
+label_settings = ExtResource("3_tyk7n")
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FundoDialogo/VBoxContainer" unique_id=758979990]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Nao" type="Button" parent="FundoDialogo/VBoxContainer/HBoxContainer" unique_id=922765556]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme = ExtResource("4_ebhud")
+text = "Não"
+
+[node name="Sim" type="Button" parent="FundoDialogo/VBoxContainer/HBoxContainer" unique_id=246783782]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme = ExtResource("5_7f3xg")
+text = "Sim"
