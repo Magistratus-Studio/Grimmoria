@@ -66,6 +66,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_s76xx"]
 LineEdit/colors/font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+LineEdit/constants/outline_size = 2
 LineEdit/fonts/font = ExtResource("9_0aumo")
 LineEdit/styles/normal = ExtResource("8_csvhh")
 SpinBox/constants/field_and_buttons_separation = 8
@@ -185,6 +186,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EmocaoContainer" type="Control" parent="." unique_id=594816267 node_paths=PackedStringArray("roda", "texto_emocao")]
 process_mode = 4
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,7 +377,6 @@ text = "Sim"
 
 [node name="FinalizarContainer" type="Control" parent="." unique_id=2036183674]
 process_mode = 4
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
