@@ -20,7 +20,6 @@ extends Control
 var tempo_total_segundos: int = 0
 var status_leitura: bool = true
 var tela_atual: Control = null
-enum {LEITURA, EMOCAO, DIALOGO, FINALIZAR}
 
 func _ready() -> void:
 	tempo_total_segundos = 0
@@ -55,6 +54,19 @@ func _on_button_parar_leitura_pressed() -> void:
 
 func _on_button_finalizar_pressed() -> void:
 	get_tree().change_scene_to_packed(resultadoLeitura)
+
+func _on_button_selecionar_emocao_pressed() -> void:
+	caixa_dialogo.show()
+	caixa_dialogo.process_mode = Node.PROCESS_MODE_INHERIT
+	container_emocao.process_mode = Node.PROCESS_MODE_DISABLED
+
+func _on_sim_pressed() -> void:
+	desabilitar_tela(caixa_dialogo)
+	definir_estado_tela(container_finalizar)
+
+func _on_nao_pressed() -> void:
+	desabilitar_tela(caixa_dialogo)
+	container_emocao.process_mode = Node.PROCESS_MODE_INHERIT
 
 func definir_estado_tela(tela: Control) -> void:
 	if tela_atual:
