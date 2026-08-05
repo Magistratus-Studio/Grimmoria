@@ -1,6 +1,7 @@
 extends Control
 
-@onready var roda = $"../Roda"
+@export var roda: TextureRect
+@export var texto_emocao: Label
 
 var angulo_setor_graus = 60.0
 var total_setores = 6
@@ -30,10 +31,13 @@ func _input(event):
 		
 		roda.rotation += delta_angulo
 		angulo_anterior = angulo_atual
+		var rotacao_graus = rad_to_deg(roda.rotation)
+		var indice_setor = round(rotacao_graus / angulo_setor_graus)
+		_calcular_resultado_parcial(int(indice_setor))
 
 
 func _calcular_angulo_mouse() -> float:
-	var centro_roda = roda.position #+ roda.pivot_offset
+	var centro_roda = roda.position + roda.pivot_offset
 	return (get_local_mouse_position() - centro_roda).angle()
 
 func _alinhar_roleta():
@@ -51,5 +55,34 @@ func _alinhar_roleta():
 
 func _calcular_resultado(indice_setor: int):
 	var indice_selecionado = posmod(-indice_setor, total_setores)
+	match indice_selecionado:
+		Globals.INDC_TRISTEZA:
+			texto_emocao.text = "Tristeza"
+		Globals.INDC_ALEGRIA:
+			texto_emocao.text = "Alegria"
+		Globals.INDC_AMOR:
+			texto_emocao.text = "Amor"
+		Globals.INDC_MEDO:
+			texto_emocao.text = "Medo"
+		Globals.INDC_RAIVA:
+			texto_emocao.text = "Raiva"
+		Globals.INDC_SURPRESA:
+			texto_emocao.text = "Surpresa"
 	
 	Globals.ultimo_indice_sorteado = indice_selecionado
+
+func _calcular_resultado_parcial(indice_setor: int):
+	var indice_selecionado = posmod(-indice_setor, total_setores)
+	match indice_selecionado:
+		Globals.INDC_TRISTEZA:
+			texto_emocao.text = "Tristeza"
+		Globals.INDC_ALEGRIA:
+			texto_emocao.text = "Alegria"
+		Globals.INDC_AMOR:
+			texto_emocao.text = "Amor"
+		Globals.INDC_MEDO:
+			texto_emocao.text = "Medo"
+		Globals.INDC_RAIVA:
+			texto_emocao.text = "Raiva"
+		Globals.INDC_SURPRESA:
+			texto_emocao.text = "Surpresa"

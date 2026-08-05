@@ -2,45 +2,39 @@ extends Control
 
 @onready var resultadoLeitura: PackedScene = load("res://Cenas/resultadoLeitura.tscn")
 
-# UI Leitura
-@onready var timer_text: Label = $TimerText
-@onready var button_text: Label = $ControlStartLeitura/LabelButton
-@onready var leitura_text: Label = $LeituraText
-@onready var timer: Timer = $TimerLeitura
-@onready var leitura_button: Control = $ControlStartLeitura
+@export_category("UI Leitura")
+@export var container_leitura: Control
+@export var timer_text: Label
+@export var leitura_text: Label
+@export var timer: Timer
 
-# UI Roleta
-@onready var roda: Sprite2D = $Roda
-@onready var ponteiro: Sprite2D = $Ponteiro
-@onready var button_voltar: Control = $ControlVoltar
-@onready var roda_control: Control = $RodaControl
+@export_category("UI Roleta")
+@export var container_emocao: Control
+
+@export_category("UI Caixa Dialogo")
+@export var caixa_dialogo: Panel
+
+@export_category("UI Finalizar")
+@export var container_finalizar: Control
 
 var tempo_total_segundos: int = 0
-var status_leitura: bool = false
+var status_leitura: bool = true
+var tela_atual: Control = null
+enum {LEITURA, EMOCAO, DIALOGO, FINALIZAR}
 
 func _ready() -> void:
 	tempo_total_segundos = 0
-	status_leitura = false
+	status_leitura = true
+	timer.start()
 	
 	timer_text.text = "00:00"
-	button_text.text = "Iniciar Leitura"
 	leitura_text.text = "Tempo de Leitura"
 	
+	desabilitar_tela(container_emocao)
+	desabilitar_tela(container_finalizar)
+	desabilitar_tela(caixa_dialogo)
 	# Chama a função que gerencia quem está visível e ativo
-	_definir_estado_tela(true)
-
-func _on_button_start_leitura_pressed() -> void:
-	status_leitura = not status_leitura
-	
-	if status_leitura:
-		timer.start()
-		button_text.text = "Parar Leitura"
-	else:
-		timer.stop()
-		Globals.tempoLeitura = tempo_total_segundos
-		leitura_text.text = "Leitura Finalizada"
-		# Quando para a leitura, muda para a tela da roleta
-		_definir_estado_tela(false)
+	definir_estado_tela(container_leitura)
 
 func _on_timer_leitura_timeout() -> void:
 	tempo_total_segundos += 1
@@ -52,24 +46,24 @@ func _on_timer_leitura_timeout() -> void:
 	# Formatação limpa usando Array: [minutos, segundos]
 	timer_text.text = "%02d:%02d" % [minutos, segundos]
 
-func _on_button_voltar_pressed() -> void:
+func _on_button_parar_leitura_pressed() -> void:
+	status_leitura = false
+	leitura_text.text = "Leitura Finalizada"
+	timer.stop()
+	
+	definir_estado_tela(container_emocao)
+
+func _on_button_finalizar_pressed() -> void:
 	get_tree().change_scene_to_packed(resultadoLeitura)
 
-# --- FUNÇÃO AUXILIAR ---
-# Controla quem aparece na tela. true = Leitura, false = Roleta
-func _definir_estado_tela(modo_leitura: bool) -> void:
-	var modo_roleta = not modo_leitura
-	
-	# Elementos da Leitura
-	#timer_text.visible = modo_leitura
-	leitura_button.visible = modo_leitura
-	leitura_button.process_mode = Node.PROCESS_MODE_INHERIT if modo_leitura else Node.PROCESS_MODE_DISABLED
-	
-	# Elementos da Roleta
-	roda.visible = modo_roleta
-	ponteiro.visible = modo_roleta
-	button_voltar.visible = modo_roleta
-	
-	var processamento_roleta = Node.PROCESS_MODE_INHERIT if modo_roleta else Node.PROCESS_MODE_DISABLED
-	roda_control.process_mode = processamento_roleta
-	button_voltar.process_mode = processamento_roleta
+func definir_estado_tela(tela: Control) -> void:
+	if tela_atual:
+		tela_atual.hide()
+		tela_atual.process_mode = Node.PROCESS_MODE_DISABLED
+	tela_atual = tela
+	tela_atual.show()
+	tela_atual.process_mode = Node.PROCESS_MODE_INHERIT
+
+func desabilitar_tela(tela) -> void:
+	tela.hide()
+	tela.process_mode = Node.PROCESS_MODE_DISABLED
